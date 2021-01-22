@@ -1,0 +1,38 @@
+@import "./reset.css";
+
+.cheesboard {
+  height: var(--cheesboard-height);
+  width: var(--cheesboard-width);
+  margin-top: 5rem;
+}
+
+.field-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2rem repeat(8, var(--field-width));
+  grid-template-rows: repeat(8, var(--field-height)) 2rem;
+}
+
+.field:nth-child(odd) {
+  background-color: var(--white-field-background);
+}
+
+.field:nth-child(even) {
+  background-color: var(--black-field-background);
+}
+
+.number-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-label {
+  text-align: center;
+  line-height: 1rem;
+}
+
+[class$="-label"] {
+  font-size: 1rem;
+}
