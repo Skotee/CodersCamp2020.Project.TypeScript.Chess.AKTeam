@@ -15,11 +15,11 @@
 }
 
 .field:nth-child(odd) {
-  background-color: var(--white-field-background);
+  background-color: var(--black-field-background);
 }
 
 .field:nth-child(even) {
-  background-color: var(--black-field-background);
+  background-color: var(--white-field-background);
 }
 
 .number-label {
