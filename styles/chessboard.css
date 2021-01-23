@@ -28,11 +28,6 @@
   align-items: center;
 }
 
-.letter-label:not(#field-O) {
-  text-align: center;
-  line-height: 0.5rem;
-}
-
 [class$="-label"] {
   font-size: 0.2rem;
 }
