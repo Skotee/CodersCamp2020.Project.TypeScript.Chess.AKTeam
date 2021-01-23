@@ -3,15 +3,15 @@
 .cheesboard {
   height: var(--cheesboard-height);
   width: var(--cheesboard-width);
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .field-container {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 2rem repeat(8, var(--field-width));
-  grid-template-rows: repeat(8, var(--field-height)) 2rem;
+  grid-template-columns: var(--label-ratio) repeat(8, var(--field-width));
+  grid-template-rows: repeat(8, var(--field-height)) var(--label-ratio);
 }
 
 .field:nth-child(odd) {
@@ -28,11 +28,27 @@
   align-items: center;
 }
 
-.letter-label {
+.letter-label:not(#field-O) {
   text-align: center;
-  line-height: 1rem;
+  line-height: 0.5rem;
 }
 
 [class$="-label"] {
-  font-size: 1rem;
+  font-size: 0.2rem;
+}
+
+[data-coordinate$="-8"] {
+  border-top: 1px solid rgb(150, 150, 150);
+}
+
+[data-coordinate$="-1"] {
+  border-bottom: 1px solid rgb(150, 150, 150);
+}
+
+[data-coordinate^="A"] {
+  border-left: 1px solid rgb(150, 150, 150);
+}
+
+[data-coordinate^="H"] {
+  border-right: 1px solid rgb(150, 150, 150);
 }
