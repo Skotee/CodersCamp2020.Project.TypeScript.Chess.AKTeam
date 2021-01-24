@@ -1,0 +1,9 @@
+:root {
+  --white-field-background: rgb(241, 241, 241);
+  --black-field-background: rgb(27, 26, 26);
+  --field-width: 12%;
+  --field-height: var(--field-width);
+  --cheesboard-width: 40vw;
+  --cheesboard-height: var(--cheesboard-width);
+  --label-ratio: 4%;
+}
