@@ -1,4 +1,4 @@
-interface PieceSet{
-    pieces:Piece[];
+class PieceSet {
+    piecesList: Piece[];
     color: PieceColor;
 }
