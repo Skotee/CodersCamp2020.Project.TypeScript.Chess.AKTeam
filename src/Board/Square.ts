@@ -1,4 +1,7 @@
-interface Square{
+class Square {
     row:number;
-    col:number;
+    column: number;
+    constructor(parameters) {
+        
+    }
 }
