@@ -1,3 +1,9 @@
-export default function sum(a: number, b:  number): number {
-    return a + b;
- }
+class Move {
+    startSquare: Square;
+    endSquare: Square;
+    piece: Piece;
+    capturePiece: Piece;
+    constructor(parameters) {
+        
+    }
+}

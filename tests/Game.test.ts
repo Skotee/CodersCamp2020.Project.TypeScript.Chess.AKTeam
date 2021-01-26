@@ -1,1 +1,0 @@
-import sum from "../src/Game/Game";
