@@ -1,4 +1,4 @@
-enum PieceType{
+export enum PieceType {
     Pawn,
     King,
     Queen,
