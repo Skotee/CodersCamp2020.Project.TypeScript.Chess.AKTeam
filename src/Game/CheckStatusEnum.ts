@@ -1,4 +1,4 @@
-enum CheckStatus{
+export enum CheckStatus {
     BlackInCheck,
     WhiteInCheck,
     BlackCheckmated,
