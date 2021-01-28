@@ -1,4 +1,4 @@
-enum MoveDirection{
+export enum MoveDirection {
     ascending,
     descending
 }
