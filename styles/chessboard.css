@@ -30,6 +30,7 @@
 
 [class$="-label"] {
   font-size: 0.2rem;
+  text-align: center;
 }
 
 [data-coordinate$="-8"] {
