@@ -3,7 +3,6 @@ import { Board } from "../../src/Board/Board";
 import { King } from "../../src/Board/King";
 import { Knight } from "../../src/Board/Knight";
 import { Pawn } from "../../src/Board/Pawn";
-import { Piece } from "../../src/Board/Piece";
 import { PieceColor } from "../../src/Board/PieceColorEnum";
 import { PieceType } from "../../src/Board/PieceTypeEnum";
 import { Rook } from "../../src/Board/Rook";
@@ -22,15 +21,13 @@ describe("TESTS FOR CHECKEDMATE", () => {
     const whiteKing = new King(
       PieceColor.White,
       PieceType.King,
-      whiteKingPosition,
-      false
+      whiteKingPosition
     );
 
     const blackKing = new King(
       PieceColor.Black,
       PieceType.King,
-      blackKingPosition,
-      false
+      blackKingPosition
     );
 
     newBoard.addPiece(whiteKing);
@@ -61,22 +58,19 @@ describe("TESTS FOR CHECKEDMATE", () => {
     const whiteKing = new King(
       PieceColor.White,
       PieceType.King,
-      whiteKingPosition,
-      false
+      whiteKingPosition
     );
 
     const blackKing = new King(
       PieceColor.Black,
       PieceType.King,
-      blackKingPosition,
-      false
+      blackKingPosition
     );
 
     const blackKnight = new Knight(
       PieceColor.Black,
       PieceType.Knight,
-      blackKnightPosition,
-      false
+      blackKnightPosition
     );
 
     newBoard.addPiece(whiteKing);
@@ -111,36 +105,31 @@ describe("TESTS FOR CHECKEDMATE", () => {
     const whiteKing = new King(
       PieceColor.White,
       PieceType.King,
-      whiteKingPosition,
-      false
+      whiteKingPosition
     );
 
     const whiteBishop = new Bishop(
       PieceColor.White,
       PieceType.Bishop,
-      whiteBishopPosition,
-      false
+      whiteBishopPosition
     );
 
     const blackKing = new King(
       PieceColor.Black,
       PieceType.King,
-      blackKingPosition,
-      false
+      blackKingPosition
     );
 
     const blackKnight = new Knight(
       PieceColor.Black,
       PieceType.Knight,
-      blackKnightPosition,
-      false
+      blackKnightPosition
     );
 
     const blackRook = new Rook(
       PieceColor.Black,
       PieceType.Rook,
-      blackRookPosition,
-      false
+      blackRookPosition
     );
 
     newBoard.addPiece(whiteKing);
@@ -179,50 +168,43 @@ describe("TESTS FOR CHECKEDMATE", () => {
     const whiteKing = new King(
       PieceColor.White,
       PieceType.King,
-      whiteKingPosition,
-      false
+      whiteKingPosition
     );
 
     const whiteBishop = new Bishop(
       PieceColor.White,
       PieceType.Bishop,
-      whiteBishopPosition,
-      false
+      whiteBishopPosition
     );
 
     const whitePawn = new Pawn(
       PieceColor.White,
       PieceType.Pawn,
-      whitePawnPosition,
-      false
+      whitePawnPosition
     );
 
     const blackKing = new King(
       PieceColor.Black,
       PieceType.King,
-      blackKingPosition,
-      false
+      blackKingPosition
     );
 
     const blackKnight = new Knight(
       PieceColor.Black,
       PieceType.Knight,
-      blackKnightPosition,
-      false
+      blackKnightPosition
     );
 
     const blackRook = new Rook(
       PieceColor.Black,
       PieceType.Rook,
-      blackRookPosition,
-      false
+      blackRookPosition
     );
 
     const blackQueen = new Rook(
       PieceColor.Black,
       PieceType.Queen,
-      blackQueenPosition,
-      false
+      blackQueenPosition
     );
 
     newBoard.addPiece(whiteKing);
@@ -258,22 +240,19 @@ describe("TESTS FOR CHECKEDMATE", () => {
     const whiteKing = new King(
       PieceColor.White,
       PieceType.King,
-      whiteKingPosition,
-      false
+      whiteKingPosition
     );
 
     const blackKing = new King(
       PieceColor.Black,
       PieceType.King,
-      blackKingPosition,
-      false
+      blackKingPosition
     );
 
     const blackKnight = new Knight(
       PieceColor.Black,
       PieceType.Knight,
-      blackKnightPosition,
-      false
+      blackKnightPosition
     );
 
     newBoard.addPiece(whiteKing);
@@ -311,64 +290,55 @@ describe("TESTS FOR CHECKEDMATE", () => {
     const whiteKing = new King(
       PieceColor.White,
       PieceType.King,
-      whiteKingPosition,
-      false
+      whiteKingPosition
     );
 
     const whiteBishop = new Bishop(
       PieceColor.White,
       PieceType.Bishop,
-      whiteBishopPosition,
-      false
+      whiteBishopPosition
     );
 
     const whitePawn = new Pawn(
       PieceColor.White,
       PieceType.Pawn,
-      whitePawnPosition,
-      false
+      whitePawnPosition
     );
 
     const whiteRook = new Pawn(
       PieceColor.White,
       PieceType.Rook,
-      whiteRookPosition,
-      false
+      whiteRookPosition
     );
 
     const whiteQueen = new Pawn(
       PieceColor.White,
       PieceType.Queen,
-      whiteQueenPosition,
-      false
+      whiteQueenPosition
     );
 
     const blackKing = new King(
       PieceColor.Black,
       PieceType.King,
-      blackKingPosition,
-      false
+      blackKingPosition
     );
 
     const blackKnight = new Knight(
       PieceColor.Black,
       PieceType.Knight,
-      blackKnightPosition,
-      false
+      blackKnightPosition
     );
 
     const blackRook = new Rook(
       PieceColor.Black,
       PieceType.Rook,
-      blackRookPosition,
-      false
+      blackRookPosition
     );
 
     const blackQueen = new Rook(
       PieceColor.Black,
       PieceType.Queen,
-      blackQueenPosition,
-      false
+      blackQueenPosition
     );
 
     newBoard.addPiece(whiteKing);
@@ -408,36 +378,31 @@ describe("TESTS FOR CHECKEDMATE", () => {
     const whiteKing = new King(
       PieceColor.White,
       PieceType.King,
-      whiteKingPosition,
-      false
+      whiteKingPosition
     );
 
     const whiteQueen = new Pawn(
       PieceColor.White,
       PieceType.Queen,
-      whiteQueenPosition,
-      false
+      whiteQueenPosition
     );
 
     const whiteRook = new Pawn(
       PieceColor.White,
       PieceType.Rook,
-      whiteRookPosition,
-      false
+      whiteRookPosition
     );
 
     const blackKing = new King(
       PieceColor.Black,
       PieceType.King,
-      blackKingPosition,
-      false
+      blackKingPosition
     );
 
     const blackKnight = new Knight(
       PieceColor.Black,
       PieceType.Knight,
-      blackKnightPosition,
-      false
+      blackKnightPosition
     );
 
     newBoard.addPiece(whiteKing);
@@ -469,15 +434,13 @@ describe("TESTS FOR CHECKEDMATE", () => {
     const whiteKing = new King(
       PieceColor.White,
       PieceType.King,
-      whiteKingPosition,
-      false
+      whiteKingPosition
     );
 
     const blackKing = new King(
       PieceColor.Black,
       PieceType.King,
-      blackKingPosition,
-      false
+      blackKingPosition
     );
 
     newBoard.addPiece(whiteKing);
