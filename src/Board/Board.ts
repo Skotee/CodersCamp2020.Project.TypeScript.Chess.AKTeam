@@ -1,14 +1,15 @@
 import { PieceSet } from "./PieceSet";
 import { PieceColor } from "./PieceColorEnum";
 import { Piece } from "./Piece";
+import { Square } from "./Square";
 
 export class Board {
-  private _squares: Piece[][];
+  private _squares: Square[][];
   private _pieceSets: PieceSet[];
   private _pieceSetOnTop: PieceColor;
 
   constructor(
-    squares: Piece[][] = [],
+    squares: Square[][] = [],
     pieceSets: PieceSet[] = [],
     pieceSetOnTop: PieceColor = PieceColor.Black
   ) {
@@ -17,11 +18,11 @@ export class Board {
     this._pieceSetOnTop = pieceSetOnTop;
   }
 
-  public get squares(): Piece[][] {
+  public get squares(): Square[][] {
     return this._squares;
   }
 
-  public set squares(squares: Piece[][]) {
+  public set squares(squares: Square[][]) {
     this._squares = squares;
   }
 

@@ -8,12 +8,18 @@ export class King extends Piece {
     super(pieceColor, pieceType, placeAt);
   }
 
-  public validMoves(): void /*List<Square>*/ {
-    /*TO DO*/
+  public validMoves(): Square[] {
+    const directions = [
+      [-1, -1], [-1, 0], [-1, 1],
+      [0, -1], [0, 1],
+      [1, 1], [1, 0], [1, 1]
+    ];
+    // Tutaj potrzebny nam będzie this.board,
+    // żeby wiedzieć, gdzie stoją figury.
+    // - Pionki mogą blokować siebie nawzajem.
+    // - Król musi sprawdzać isCheckmate dla pola.
+    return directions.map(([y, x]) => new Square(this.placeAt.row + y, this.placeAt.column + x));
   }
-  /*TODO -> methods for validaste if king moved -> important for castling */
 
-  public makeMove(): void /*Move*/ {
-    /*TO DO*/
-  }
+  public makeMove(): void /*Move*/ {/*TO DO*/ }
 }
