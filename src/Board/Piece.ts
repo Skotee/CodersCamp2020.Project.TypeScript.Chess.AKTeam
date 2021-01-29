@@ -7,31 +7,19 @@ export abstract class Piece {
   private _pieceColor: PieceColor;
   private _pieceType: PieceType;
   private _placeAt: Square;
-  private _moved: boolean;
-  private _toBeCaptured: boolean;
 
-  constructor(pieceColor: PieceColor, pieceType: PieceType, placeAt: Square, moved: boolean, toBeCaptured: boolean) {
+  constructor(pieceColor: PieceColor, pieceType: PieceType, placeAt: Square) {
     this._pieceColor = pieceColor;
     this._pieceType = pieceType;
     this._placeAt = placeAt;
-    this._moved = moved;
-    this._toBeCaptured = toBeCaptured;
   }
 
   public get pieceColor(): PieceColor {
     return this._pieceColor;
   }
 
-  public set pieceColor(pieceColor: PieceColor) {
-    this._pieceColor = pieceColor;
-  }
-
   public get pieceType(): PieceType {
     return this._pieceType;
-  }
-
-  public set pieceType(pieceType: PieceType) {
-    this._pieceType = pieceType;
   }
 
   public get placeAt(): Square {
@@ -42,22 +30,10 @@ export abstract class Piece {
     this._placeAt = placeAt;
   }
 
-  public get moved(): boolean {
-    return this._moved;
+  public validMoves(): void /*List<Square>*/ {
+    /*TODO*/
   }
-
-  public set moved(moved: boolean) {
-    this._moved = moved;
+  public makeMove(): void /*Move*/ {
+    /*TODO*/
   }
-
-  public get toBeCaptured(): boolean {
-    return this._toBeCaptured;
-  }
-
-  public set toBeCaptured(toBeCaptured: boolean) {
-    this._toBeCaptured = toBeCaptured;
-  }
-
-  public validMoves(): void /*List<Square>*/ {/*TO DO*/ };
-  public makeMove(): void /*Move*/ {/*TO DO*/ };
 }
