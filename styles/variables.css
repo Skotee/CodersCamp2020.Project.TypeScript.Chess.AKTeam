@@ -1,6 +1,6 @@
 :root {
-  --white-field-background: rgb(241, 241, 241);
-  --black-field-background: rgb(27, 26, 26);
+  --white-field-background: rgba(221, 218, 218, 0.863);
+  --black-field-background: rgb(116, 114, 114);
   --field-width: 12%;
   --field-height: var(--field-width);
   --cheesboard-width: 40vw;
