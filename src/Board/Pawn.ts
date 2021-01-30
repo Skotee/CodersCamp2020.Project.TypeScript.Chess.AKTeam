@@ -27,6 +27,10 @@ export class Pawn extends Piece {
 
   public makeMove(): void /*Move*/ {
     /*TO DO*/
+    switch (this.pieceColor){
+      
+    }
+
   }
   public moveDirection(): void /*MoveDirection*/{
     // TO DO

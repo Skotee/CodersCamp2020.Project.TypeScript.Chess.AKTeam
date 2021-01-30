@@ -30,7 +30,7 @@ describe("PAWN PROMOTION TEST", () => {
 
     });
 
-    // TEST 1
+    // TEST 2
 
     test("check if white pawn can be promoted to other figure at square 8A ([7][0])", () => {
       const newBoard = new Board();
@@ -43,6 +43,7 @@ describe("PAWN PROMOTION TEST", () => {
       );
 
       newBoard.addPiece(whitePwan);
+      
       const result = whitePwan.promotionCheck();
       expect(result).toBe(true);
 
