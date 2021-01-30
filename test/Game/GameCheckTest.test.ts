@@ -5,6 +5,8 @@ import { Pawn } from "../../src/Board/Pawn";
 import { PieceColor } from "../../src/Board/PieceColorEnum";
 import { PieceType } from "../../src/Board/PieceTypeEnum";
 import { Square } from "../../src/Board/Square";
+import { Queen } from "../../src/Board/Queen";
+import { Rook } from "../../src/Board/Rook";
 import { Game } from "../../src/Game/Game";
 
 describe("TESTS FOR CHECK", () => {
@@ -25,13 +27,13 @@ describe("TESTS FOR CHECK", () => {
         whiteKingPosition
       );
   
-      const whiteQueen = new Pawn(
+      const whiteQueen = new Queen(
         PieceColor.White,
         PieceType.Queen,
         whiteQueenPosition
       );
   
-      const whiteRook = new Pawn(
+      const whiteRook = new Rook(
         PieceColor.White,
         PieceType.Rook,
         whiteRookPosition
@@ -89,7 +91,7 @@ describe("TESTS FOR CHECK", () => {
       blackKingPosition
     );
 
-    const whiteRook = new Knight(
+    const whiteRook = new Rook(
       PieceColor.White,
       PieceType.Rook,
       whiteRookPosition
@@ -169,7 +171,7 @@ describe("TESTS FOR CHECK", () => {
       whiteKingPosition
     );
 
-    const whiteRook = new Pawn(
+    const whiteRook = new Rook(
       PieceColor.White,
       PieceType.Rook,
       whiteRookPosition
@@ -257,7 +259,7 @@ describe("TESTS FOR CHECK", () => {
       whiteKingPosition
     );
 
-    const whiteQueen = new Pawn(
+    const whiteQueen = new Queen(
       PieceColor.White,
       PieceType.Queen,
       whiteQueenPosition
@@ -297,13 +299,13 @@ describe("TESTS FOR CHECK", () => {
       whiteKingPosition
     );
 
-    const whiteQueen = new Pawn(
+    const whiteQueen = new Queen(
       PieceColor.White,
       PieceType.Queen,
       whiteQueenPosition
     );
 
-    const whiteRook = new Pawn(
+    const whiteRook = new Rook(
       PieceColor.White,
       PieceType.Rook,
       whiteRookPosition
