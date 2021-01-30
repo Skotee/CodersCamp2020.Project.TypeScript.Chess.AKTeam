@@ -92,4 +92,7 @@ export class Game {
   isStalemated(): boolean {
     return true;
   }
+  isMovePossible(move: Move): boolean {
+    return true;
+  }
 }
