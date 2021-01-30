@@ -1,11 +1,9 @@
-import { Bishop } from "../../src/Board/Bishop";
 import { Board } from "../../src/Board/Board";
 import { King } from "../../src/Board/King";
 import { Knight } from "../../src/Board/Knight";
 import { Pawn } from "../../src/Board/Pawn";
 import { PieceColor } from "../../src/Board/PieceColorEnum";
 import { PieceType } from "../../src/Board/PieceTypeEnum";
-import { Rook } from "../../src/Board/Rook";
 import { Square } from "../../src/Board/Square";
 import { Game } from "../../src/Game/Game";
 
