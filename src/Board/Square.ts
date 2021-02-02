@@ -1,26 +1,25 @@
-type RangeType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 export class Square {
-    private _row: RangeType;
-    private _column: RangeType;
+    private _row: number;
+    private _column: number;
 
-    constructor(row: RangeType, column: RangeType) {
+    constructor(row: number, column: number) {
         this._row = row;
         this._column = column;
     }
 
-    public get row(): RangeType {
+    public get row(): number {
         return this._row;
     }
 
-    public set row(row: RangeType) {
+    public set row(row: number) {
         this._row = row;
     }
 
-    public get column(): RangeType {
+    public get column(): number {
         return this._column;
     }
 
-    public set column(column: RangeType) {
+    public set column(column: number) {
         this._column = column;
     }
 }
