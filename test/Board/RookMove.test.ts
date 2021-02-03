@@ -28,11 +28,11 @@ describe("Moves for rook", () => {
   //TEST 1-2
   test("Rook can move on free square", () => {
     //given
-    const knight = new Rook(PieceColor.White, PieceType.Rook, new Square(0, 6));
+    const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(0, 6));
     const board = new Board();
-    board.addPiece(knight);
+    board.addPiece(rook);
     const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
-    const newMove = new Move(new Square(0, 6), new Square(4, 6), knight, null);
+    const newMove = new Move(new Square(0, 6), new Square(4, 6), rook, null);
     //when
     const possibleMove = game.isMovePossible(newMove);
     //then
@@ -42,11 +42,11 @@ describe("Moves for rook", () => {
   //TEST 1-3
   test("Rook can move on free square", () => {
     //given
-    const knight = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 0));
+    const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 0));
     const board = new Board();
-    board.addPiece(knight);
+    board.addPiece(rook);
     const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
-    const newMove = new Move(new Square(2, 0), new Square(4, 0), knight, null);
+    const newMove = new Move(new Square(2, 0), new Square(4, 0), rook, null);
     //when
     const possibleMove = game.isMovePossible(newMove);
     //then
@@ -56,11 +56,11 @@ describe("Moves for rook", () => {
   //TEST 1-4
   test("Rook can move on free square", () => {
     //given
-    const knight = new Rook(PieceColor.White, PieceType.Rook, new Square(7, 1));
+    const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(7, 1));
     const board = new Board();
-    board.addPiece(knight);
+    board.addPiece(rook);
     const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
-    const newMove = new Move(new Square(7, 1), new Square(7, 5), knight, null);
+    const newMove = new Move(new Square(7, 1), new Square(7, 5), rook, null);
     //when
     const possibleMove = game.isMovePossible(newMove);
     //then
