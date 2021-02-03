@@ -14,7 +14,7 @@ export class Queen extends Piece {
     return [];
   }
 
-  public makeMove(square: Square): Move {
+  public updatePosition(square: Square): Move {
     /*TO DO*/
     return new Move(this.placeAt, square, this, null);
   }

@@ -4,6 +4,7 @@ import { Player } from "./Player";
 import { Result } from "./ResultEnum";
 import { CheckStatus } from "./CheckStatusEnum";
 import { Board } from "../Board/Board";
+import { Square } from "../Board/Square";
 
 export class Game {
   private _playedMoves: Move[];
@@ -77,7 +78,7 @@ export class Game {
     this._board = board;
   }
 
-  addMove(): void {}
+  addMove(move: Move): void {}
   create(): void {}
   isEnded(): boolean {
     return true;
@@ -93,6 +94,12 @@ export class Game {
     return true;
   }
   isMovePossible(move: Move): boolean {
+    return true;
+  }
+  getAvailableSquares(square:Square): Square[] {
+    return [];
+  }
+  isCastle(): boolean {
     return true;
   }
 }

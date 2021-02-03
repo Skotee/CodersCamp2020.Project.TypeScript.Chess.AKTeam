@@ -22,7 +22,7 @@ export class King extends Piece {
 
   /*TODO -> methods for validaste if king moved -> important for castling */
 
-  public makeMove(square: Square): Move {
+  public updatePosition(square: Square): Move {
     /*TO DO*/
     return new Move(this.placeAt, square, this, null);
   }

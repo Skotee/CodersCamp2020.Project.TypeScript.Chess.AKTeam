@@ -45,4 +45,7 @@ export class Move {
     public set capturePiece(capturePiece: Piece | null) {
         this._capturePiece = capturePiece;
     }
+
+    isPawnPromotion():boolean{return true};
+    is2FieldPawnMove():boolean{return true};
 }
