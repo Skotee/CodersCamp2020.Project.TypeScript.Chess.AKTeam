@@ -83,10 +83,16 @@ export class Game {
     return true;
   }
   operation(): void {}
+  isChecked(): boolean {
+    return true;
+  }
   isCheckmated(): boolean {
     return true;
   }
   isStalemated(): boolean {
+    return true;
+  }
+  isMovePossible(move: Move): boolean {
     return true;
   }
 }
