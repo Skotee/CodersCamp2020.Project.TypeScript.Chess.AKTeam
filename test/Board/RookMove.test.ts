@@ -8,7 +8,6 @@ import { Pawn } from "../../src/Board/Pawn";1
 import { Game } from "../../src/Game/Game";
 import { Knight } from "../../src/Board/Knight";
 import { Queen } from "../../src/Board/Queen";
-import { White } from "../../src/Board/PieceColorEnum";
 
 describe("Moves for rook", () => {
   
