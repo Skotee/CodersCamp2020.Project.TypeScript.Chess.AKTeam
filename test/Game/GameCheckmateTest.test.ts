@@ -6,6 +6,7 @@ import { Pawn } from "../../src/Board/Pawn";
 import { PieceColor } from "../../src/Board/PieceColorEnum";
 import { PieceType } from "../../src/Board/PieceTypeEnum";
 import { Rook } from "../../src/Board/Rook";
+import { Queen } from "../../src/Board/Queen";
 import { Square } from "../../src/Board/Square";
 import { Game } from "../../src/Game/Game";
 
@@ -201,7 +202,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
       blackRookPosition
     );
 
-    const blackQueen = new Rook(
+    const blackQueen = new Queen(
       PieceColor.Black,
       PieceType.Queen,
       blackQueenPosition
@@ -278,7 +279,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
 
     const whiteKingPosition = new Square(2, 2);
     const whiteBishopPosition = new Square(3, 4);
-    const whitePawnPosition = new Square(7, 8);
+    const whitePawnPosition = new Square(7, 7);
     const whiteRookPosition = new Square(3, 3);
     const whiteQueenPosition = new Square(4, 4);
 
@@ -305,7 +306,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
       whitePawnPosition
     );
 
-    const whiteRook = new Pawn(
+    const whiteRook = new Rook(
       PieceColor.White,
       PieceType.Rook,
       whiteRookPosition
@@ -366,7 +367,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
 
   //TEST 7//
 
-  test("check white King checkmate on position [6][6]", () => {
+  test("check black King checkmate on position [6][6]", () => {
     const newBoard = new Board();
 
     const whiteKingPosition = new Square(5, 2);
