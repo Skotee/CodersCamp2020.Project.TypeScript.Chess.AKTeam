@@ -85,7 +85,7 @@ describe("TESTS FOR KING", () => {
   
       const whiteKing = new King(PieceColor.White,PieceType.King,new Square(5, 2));
       const bKnight = new Knight(PieceColor.Black,PieceType.Knight,new Square(6, 2));
-      const bRook = new Rook(PieceColor.Black,-PieceType.Rook,new Square(7, 2));
+      const bRook = new Rook(PieceColor.Black,PieceType.Rook,new Square(7, 2));
       newBoard.addPiece(bRook);
       newBoard.addPiece(bKnight);
       newBoard.addPiece(whiteKing);
@@ -100,7 +100,7 @@ describe("TESTS FOR KING", () => {
   
       const whiteKing = new King(PieceColor.White,PieceType.King,new Square(5, 2));
       const bKnight = new Knight(PieceColor.Black,PieceType.Knight,new Square(6, 2));
-      const bRook = new Rook(PieceColor.Black,-PieceType.Rook,new Square(7, 2));
+      const bRook = new Rook(PieceColor.Black,PieceType.Rook,new Square(7, 2));
       newBoard.addPiece(bRook);
       newBoard.addPiece(bKnight);
       newBoard.addPiece(whiteKing);
