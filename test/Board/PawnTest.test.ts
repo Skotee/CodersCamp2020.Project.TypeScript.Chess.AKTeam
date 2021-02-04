@@ -255,12 +255,14 @@ describe('VALID ACTIONS FOR PAWN', () => {
     test("WHITE PAWN PROMOTION NOT POSSIBLE AT [0][0] 8A", () => {
         //given
         const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(1, 0))
+        const bRook = new Rook(PieceColor.Black, PieceType.Rook, new Square(0,0));
         const board = new Board();
         board.addPiece(wPawn);
+        board.addPiece(bRook);
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         
         //when
-        const newMove = new Move(new Square(1, 0), new Square(0, 0), wPawn, null);
+        const newMove = new Move(new Square(1, 0), new Square(0, 0), wPawn, bRook);
         // then
         expect(game.isMovePossible(newMove)).toBe(false);
         expect(newMove.isPawnPromotion()).toBe(false);
