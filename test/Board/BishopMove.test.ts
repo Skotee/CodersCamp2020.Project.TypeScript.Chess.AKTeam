@@ -56,16 +56,14 @@ describe("Moves for bishop", () => {
     test("Bishop can move on free square", () => {
         //given
         const bishop = new Bishop(PieceColor.White, PieceType.Bishop, new Square(3, 1));
-        const pawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(5, 3));
         const board = new Board();
         board.addPiece(bishop);
-        board.addPiece(pawn);
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(3, 1), new Square(5, 3), bishop, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
         //then
-        expect(possibleMove).toBe(false);
+        expect(possibleMove).toBe(true);
     });
 
     //TEST 2-1
