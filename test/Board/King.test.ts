@@ -9,6 +9,7 @@ import { Game } from "../../src/Game/Game";
 import { Knight } from "../../src/Board/Knight";
 import { Queen } from "../../src/Board/Queen";
 import { King } from "../../src/Board/King";
+import { Bishop } from "../../src/Board/Bishop";
 
 // TESTS: 
 // 1-KING MOVEMENT
@@ -16,8 +17,6 @@ import { King } from "../../src/Board/King";
 // 3-KING CAPTUREING BLACK PIECES
 // 4-KING TRYING TO CAPTURE WHITE PIECES
 // 5-KING MOVING OUT OF CHESSBOARD
-
-
 
 describe("TESTS FOR KING", () => {
   //TEST 1
@@ -114,7 +113,7 @@ describe("TESTS FOR KING", () => {
       const newBoard = new Board();
   
       const whiteKing = new King(PieceColor.White,PieceType.King,new Square(5, 2));
-      const bBishop = new Knight(PieceColor.Black,PieceType.Bishop,new Square(6, 2));
+      const bBishop = new Bishop(PieceColor.Black,PieceType.Bishop,new Square(6, 2));
       newBoard.addPiece(bBishop);
       newBoard.addPiece(whiteKing);
   
@@ -166,7 +165,7 @@ describe("TESTS FOR KING", () => {
       const newBoard = new Board();
   
       const whiteKing = new King(PieceColor.White,PieceType.King,new Square(5, 2));
-      const wBishop = new Knight(PieceColor.White,PieceType.Bishop,new Square(6, 2));
+      const wBishop = new Bishop(PieceColor.White,PieceType.Bishop,new Square(6, 2));
       newBoard.addPiece(wBishop);
       newBoard.addPiece(whiteKing);
   
@@ -179,7 +178,7 @@ describe("TESTS FOR KING", () => {
       const newBoard = new Board();
   
       const whiteKing = new King(PieceColor.White,PieceType.King,new Square(5, 2));
-      const wQueen = new Knight(PieceColor.White,PieceType.Queen,new Square(6, 2));
+      const wQueen = new Queen(PieceColor.White,PieceType.Queen,new Square(6, 2));
       newBoard.addPiece(wQueen);
       newBoard.addPiece(whiteKing);
   
