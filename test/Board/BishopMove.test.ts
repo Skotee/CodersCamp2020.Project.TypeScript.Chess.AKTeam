@@ -75,7 +75,7 @@ describe("Moves for bishop", () => {
         board.addPiece(bishop);
         board.addPiece(pawn);
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-        const newMove = new Move(new Square(4, 5), new Square(5, 4), bishop, null);
+        const newMove = new Move(new Square(4, 5), new Square(5, 4), bishop, pawn);
         //when
         const possibleMove = game.isMovePossible(newMove);
         //then
@@ -91,7 +91,7 @@ describe("Moves for bishop", () => {
         board.addPiece(bishop);
         board.addPiece(pawn);
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-        const newMove = new Move(new Square(0, 0), new Square(2, 2), bishop, null);
+        const newMove = new Move(new Square(0, 0), new Square(2, 2), bishop, pawn);
         //when
         const possibleMove = game.isMovePossible(newMove);
         //then
@@ -107,7 +107,7 @@ describe("Moves for bishop", () => {
         board.addPiece(bishop);
         board.addPiece(pawn);
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-        const newMove = new Move(new Square(3, 2), new Square(4, 3), bishop, null);
+        const newMove = new Move(new Square(3, 2), new Square(4, 3), bishop, pawn);
         //when
         const possibleMove = game.isMovePossible(newMove);
         //then
@@ -123,7 +123,7 @@ describe("Moves for bishop", () => {
         board.addPiece(bishop);
         board.addPiece(pawn);
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-        const newMove = new Move(new Square(6, 0), new Square(1, 5), bishop, null);
+        const newMove = new Move(new Square(6, 0), new Square(1, 5), bishop, pawn);
         //when
         const possibleMove = game.isMovePossible(newMove);
         //then
@@ -187,7 +187,7 @@ describe("Moves for bishop", () => {
         board.addPiece(bishop);
         board.addPiece(queen);
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-        const newMove = new Move(new Square(6, 0), new Square(4, 2), bishop, pawn);
+        const newMove = new Move(new Square(6, 0), new Square(4, 2), bishop, queen);
         //when
         const possibleMove = game.isMovePossible(newMove);
         //then
