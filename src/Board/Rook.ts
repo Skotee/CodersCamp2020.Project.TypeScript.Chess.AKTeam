@@ -2,22 +2,20 @@ import { PieceType } from "./PieceTypeEnum";
 import { PieceColor } from "./PieceColorEnum";
 import { Square } from "./Square";
 import { Piece } from "./Piece";
+import { Move } from "../Game/Move";
 
 export class Rook extends Piece {
-  constructor(
-    pieceColor: PieceColor,
-    pieceType: PieceType,
-    placeAt: Square,
-    moved: boolean
-  ) {
-    super(pieceColor, pieceType, placeAt, moved);
+  constructor(pieceColor: PieceColor, pieceType: PieceType, placeAt: Square) {
+    super(pieceColor, pieceType, placeAt);
   }
 
-  public validMoves(): void /*List<Square>*/ {
+  public validMoves(): Square[] {
     /*TO DO*/
+    return [];
   }
 
-  public makeMove(): void /*Move*/ {
+  public updatePosition(square: Square): Move {
     /*TO DO*/
+    return new Move(this.placeAt, square, this, null);
   }
 }

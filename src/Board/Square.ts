@@ -7,8 +7,8 @@ export class Square {
         this._row = row;
         this._column = column;
     }
-
-    public get row(): RangeType {
+  
+    public get row(): number {
         return this._row;
     }
 
