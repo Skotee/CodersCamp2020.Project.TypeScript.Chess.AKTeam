@@ -31,7 +31,34 @@ describe('VALID ACTIONS FOR PAWN', () => {
         expect(game.isMovePossible(newMove)).toBe(true);
     });
     // TEST 1.2
-    test("BLOCKING WHITE PAWN MOVE AT [1][0] 7A", () => {
+    test("WHITE PAWN MOVE AT [2][0] 6A", () => {
+        //given
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(3, 0));
+        const board = new Board();
+        board.addPiece(wPawn);
+        
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+        //when
+        const newMove = new Move(new Square(3, 0), new Square(2, 0), wPawn, null);
+        // then
+        expect(game.isMovePossible(newMove)).toBe(false);
+    });
+     // TEST 1.3
+     test("BLOCKING WHITE PAWN MOVE AT [2][0] 6A", () => {
+        //given
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(3, 0));
+        const bRook = new Rook(PieceColor.Black, PieceType.Rook, new Square(2,0));
+        const board = new Board();
+        board.addPiece(wPawn);
+        board.addPiece(bRook);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+        //when
+        const newMove = new Move(new Square(3, 0), new Square(2, 0), wPawn, null);
+        // then
+        expect(game.isMovePossible(newMove)).toBe(false);
+    });
+     // TEST 1.4
+     test("BLOCKING WHITE PAWN MOVE AT [1][0] 7A", () => {
         //given
         const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(2, 0));
         const bRook = new Rook(PieceColor.Black, PieceType.Rook, new Square(1,0));
@@ -40,7 +67,7 @@ describe('VALID ACTIONS FOR PAWN', () => {
         board.addPiece(bRook);
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         //when
-        const newMove = new Move(new Square(2, 0), new Square(1, 0), wPawn, null);
+        const newMove = new Move(new Square(2, 0), new Square(1, 0), wPawn, bRook);
         // then
         expect(game.isMovePossible(newMove)).toBe(false);
     });
@@ -71,6 +98,33 @@ describe('VALID ACTIONS FOR PAWN', () => {
         // then
         expect(game.isMovePossible(newMove)).toBe(false);
     });
+     // TEST 2.3
+     test("WHITE PAWN CAN ATTACK FROM [5][7] 3H TO [4][6] 4G", () => {
+        //given
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(5, 7))
+        const board = new Board();
+        board.addPiece(wPawn);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+        
+        //when
+        const newMove = new Move(new Square(5, 7), new Square(5, 6), wPawn, null);
+        // then
+        expect(game.isMovePossible(newMove)).toBe(false);
+    });
+     // TEST 2.4
+     test("WHITE PAWN CAN ATTACK FROM [5][7] 3H TO [4][6] 4G", () => {
+        //given
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(5, 7))
+        const bRook = new Rook(PieceColor.Black, PieceType.Rook, new Square(4,6));
+        const board = new Board();
+        board.addPiece(wPawn);
+        board.addPiece(bRook);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+        //when
+        const newMove = new Move(new Square(5, 7), new Square(4, 6), wPawn, bRook);
+        // then
+        expect(game.isMovePossible(newMove)).toBe(true);
+    });
     // TEST 3.1
     test("WHITE PAWN CAN DO STARTING MOVE FROM [6][6] 2G TO [4][6] 4G", () => {
         //given
@@ -85,9 +139,22 @@ describe('VALID ACTIONS FOR PAWN', () => {
         expect(game.isMovePossible(newMove)).toBe(true);
     });
     // TEST 3.2
+    test("WHITE PAWN CAN DO STARTING MOVE FROM [6][5] 2F TO [4][5] 4F", () => {
+        //given
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(6, 5))
+        const board = new Board();
+        board.addPiece(wPawn);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+        
+        //when
+        const newMove = new Move(new Square(6, 5), new Square(4, 5), wPawn, null);
+        // then
+        expect(game.isMovePossible(newMove)).toBe(true);
+    });
+    // TEST 3.3
     test("WHITE PAWN CAN'T DO STARTING MOVE FROM [5][6] 3G TO [3][6] 5G", () => {
         //given
-        const wPawn = new Pawn(PieceColor.White, PieceType.King, new Square(5, 6))
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(5, 6))
         const board = new Board();
         board.addPiece(wPawn);
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
@@ -97,40 +164,83 @@ describe('VALID ACTIONS FOR PAWN', () => {
         // then
         expect(game.isMovePossible(newMove)).toBe(false);
     });
+     // TEST 3.4
+     test("WHITE PAWN CAN'T DO STARTING MOVE FROM [5][5] 3F TO [3][5] 5F", () => {
+        //given
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(5, 5))
+        const board = new Board();
+        board.addPiece(wPawn);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+        
+        //when
+        const newMove = new Move(new Square(5, 5), new Square(3, 5), wPawn, null);
+        // then
+        expect(game.isMovePossible(newMove)).toBe(false);
+    });
     // TEST 4.1
     test("WHITE PAWN CAN CAPTURE BLACK PAWN IN FLIGHT", () => {
         //given
-        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(6, 7));
-        const bPawn = new Pawn(PieceColor.Black, PieceType.Rook, new Square(5,6));
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(1, 0));
+        const bPawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(3,1));
         const board = new Board();
         board.addPiece(wPawn);
         board.addPiece(bPawn);
         const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
         //when
         const bMove = new Move(new Square(1, 0), new Square(3, 0) ,bPawn, null)
-        const wMove = new Move(new Square(3, 1), new Square(2, 1), wPawn, bPawn);
+        const wMove = new Move(new Square(3, 1), new Square(2, 0), wPawn, bPawn);
         // then
         expect(game.isMovePossible(wMove)).toBe(true);
     });
     // TEST 4.2
+    test("WHITE PAWN CAN CAPTURE BLACK PAWN IN FLIGHT", () => {
+        //given
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(1, 1));
+        const bPawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(3,2));
+        const board = new Board();
+        board.addPiece(wPawn);
+        board.addPiece(bPawn);
+        const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
+        //when
+        const bMove = new Move(new Square(1, 1), new Square(3, 1) ,bPawn, null)
+        const wMove = new Move(new Square(3, 2), new Square(2, 1), wPawn, bPawn);
+        // then
+        expect(game.isMovePossible(wMove)).toBe(true);
+    });
+    // TEST 4.3
     test("WHITE PAWN CAN'T CAPTURE BLACK PAWN IN FLIGHT", () => {
         //given
-        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(6, 7));
-        const bPawn = new Pawn(PieceColor.Black, PieceType.Rook, new Square(5,6));
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(2, 0));
+        const bPawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(3,1));
         const board = new Board();
         board.addPiece(wPawn);
         board.addPiece(bPawn);
         const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
         //when
         const bMove = new Move(new Square(2, 0), new Square(3, 0) ,bPawn, null)
-        const wMove = new Move(new Square(3, 1), new Square(2, 1), wPawn, bPawn);
+        const wMove = new Move(new Square(3, 1), new Square(2, 0), wPawn, bPawn);
+        // then
+        expect(game.isMovePossible(wMove)).toBe(false);
+    });
+    // TEST 4.4
+    test("WHITE PAWN CAN'T CAPTURE BLACK PAWN IN FLIGHT", () => {
+        //given
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(2, 1));
+        const bPawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(3,2));
+        const board = new Board();
+        board.addPiece(wPawn);
+        board.addPiece(bPawn);
+        const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
+        //when
+        const bMove = new Move(new Square(2, 1), new Square(3, 1) ,bPawn, null)
+        const wMove = new Move(new Square(3, 2), new Square(2, 1), wPawn, bPawn);
         // then
         expect(game.isMovePossible(wMove)).toBe(false);
     });
     // TEST 5.1
     test("WHITE PAWN PROMOTION AT [0][0] 8A", () => {
         //given
-        const wPawn = new Pawn(PieceColor.White, PieceType.King, new Square(1, 0))
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(1, 0))
         const board = new Board();
         board.addPiece(wPawn);
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
@@ -144,7 +254,7 @@ describe('VALID ACTIONS FOR PAWN', () => {
     // TEST 5.2
     test("WHITE PAWN PROMOTION NOT POSSIBLE AT [0][0] 8A", () => {
         //given
-        const wPawn = new Pawn(PieceColor.White, PieceType.King, new Square(1, 0))
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(1, 0))
         const board = new Board();
         board.addPiece(wPawn);
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
@@ -166,6 +276,20 @@ describe('VALID ACTIONS FOR PAWN', () => {
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         //when
         const newMove = new Move(new Square(1, 1), new Square(0, 0), wPawn, bRook);
+        // then
+        expect(game.isMovePossible(newMove)).toBe(true);
+        expect(newMove.isPawnPromotion()).toBe(true);
+    });
+    // TEST 5.1
+    test("WHITE PAWN PROMOTION AT [0][1] 8B", () => {
+        //given
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(1, 1))
+        const board = new Board();
+        board.addPiece(wPawn);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+        
+        //when
+        const newMove = new Move(new Square(1, 0), new Square(0, 1), wPawn, null);
         // then
         expect(game.isMovePossible(newMove)).toBe(true);
         expect(newMove.isPawnPromotion()).toBe(true);
