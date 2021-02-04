@@ -7,8 +7,6 @@ import { Game } from "../../src/Game/Game";
 import { Move } from "../../src/Game/Move";
 import { Pawn } from "../../src/Board/Pawn";
 
-
-
 describe("Moves for knight", () => {
     //TEST 1-1
     test("Knight can move on free square", () => {
@@ -16,7 +14,7 @@ describe("Moves for knight", () => {
         const knight = new Knight(PieceColor.White, PieceType.Knight, new Square(2, 2));
         const board = new Board();
         board.addPiece(knight);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(2, 2), new Square(0, 1), knight, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -30,7 +28,7 @@ describe("Moves for knight", () => {
         const knight = new Knight(PieceColor.White, PieceType.Knight, new Square(4, 4));
         const board = new Board();
         board.addPiece(knight);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(4, 4), new Square(3, 6), knight, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -44,7 +42,7 @@ describe("Moves for knight", () => {
         const knight = new Knight(PieceColor.White, PieceType.Knight, new Square(6, 2));
         const board = new Board();
         board.addPiece(knight);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(6, 2), new Square(7, 0), knight, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -58,7 +56,7 @@ describe("Moves for knight", () => {
         const knight = new Knight(PieceColor.White, PieceType.Knight, new Square(5, 1));
         const board = new Board();
         board.addPiece(knight);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(5, 1), new Square(6, 3), knight, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -74,7 +72,7 @@ describe("Moves for knight", () => {
         const board = new Board();
         board.addPiece(knight);
         board.addPiece(pawn);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(4, 5), new Square(2, 6), knight, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -90,7 +88,7 @@ describe("Moves for knight", () => {
         const board = new Board();
         board.addPiece(knight);
         board.addPiece(pawn);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(4, 4), new Square(3, 6), knight, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -106,7 +104,7 @@ describe("Moves for knight", () => {
         const board = new Board();
         board.addPiece(knight);
         board.addPiece(pawn);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(6, 2), new Square(7, 0), knight, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -122,7 +120,7 @@ describe("Moves for knight", () => {
         const board = new Board();
         board.addPiece(knight);
         board.addPiece(pawn);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(5, 1), new Square(6, 3), knight, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -138,7 +136,7 @@ describe("Moves for knight", () => {
         const board = new Board();
         board.addPiece(knight);
         board.addPiece(pawn);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(4, 5), new Square(2, 6), knight, pawn);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -154,7 +152,7 @@ describe("Moves for knight", () => {
         const board = new Board();
         board.addPiece(knight);
         board.addPiece(pawn);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(6, 6), new Square(4, 7), knight, pawn);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -170,7 +168,7 @@ describe("Moves for knight", () => {
         const board = new Board();
         board.addPiece(knight);
         board.addPiece(pawn);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(4, 4), new Square(3, 6), knight, pawn);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -186,7 +184,7 @@ describe("Moves for knight", () => {
         const board = new Board();
         board.addPiece(knight);
         board.addPiece(pawn);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(4, 5), new Square(2, 6), knight, pawn);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -200,7 +198,7 @@ describe("Moves for knight", () => {
         const knight = new Knight(PieceColor.White, PieceType.Knight, new Square(7, 0));
         const board = new Board();
         board.addPiece(knight);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(7, 0), new Square(8, 2), knight, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -214,7 +212,7 @@ describe("Moves for knight", () => {
         const knight = new Knight(PieceColor.White, PieceType.Knight, new Square(7, 7));
         const board = new Board();
         board.addPiece(knight);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(7, 7), new Square(5, 8), knight, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -228,7 +226,7 @@ describe("Moves for knight", () => {
         const knight = new Knight(PieceColor.White, PieceType.Knight, new Square(1, 6));
         const board = new Board();
         board.addPiece(knight);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(1, 6), new Square(0, 8), knight, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
@@ -242,7 +240,7 @@ describe("Moves for knight", () => {
         const knight = new Knight(PieceColor.White, PieceType.Knight, new Square(2, 6));
         const board = new Board();
         board.addPiece(knight);
-        const game = new Game(undefined, undefined, undefined, undefined, undefined, board);
+        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         const newMove = new Move(new Square(2, 6), new Square(3, 8), knight, null);
         //when
         const possibleMove = game.isMovePossible(newMove);
