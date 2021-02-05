@@ -99,7 +99,7 @@ describe('VALID ACTIONS FOR PAWN', () => {
         expect(game.isMovePossible(newMove)).toBe(false);
     });
      // TEST 2.3
-     test("WHITE PAWN CAN ATTACK FROM [5][7] 3H TO [4][6] 4G", () => {
+     test("WHITE PAWN CAN'T ATTACK FROM [5][7] 3H TO [4][6] 4G", () => {
         //given
         const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(5, 7))
         const board = new Board();
@@ -107,7 +107,7 @@ describe('VALID ACTIONS FOR PAWN', () => {
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         
         //when
-        const newMove = new Move(new Square(5, 7), new Square(5, 6), wPawn, null);
+        const newMove = new Move(new Square(5, 7), new Square(4, 6), wPawn, null);
         // then
         expect(game.isMovePossible(newMove)).toBe(false);
     });
@@ -180,8 +180,8 @@ describe('VALID ACTIONS FOR PAWN', () => {
     // TEST 4.1
     test("WHITE PAWN CAN CAPTURE BLACK PAWN IN FLIGHT", () => {
         //given
-        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(1, 0));
-        const bPawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(3,1));
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(3, 1));
+        const bPawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(1,0));
         const board = new Board();
         board.addPiece(wPawn);
         board.addPiece(bPawn);
@@ -195,8 +195,8 @@ describe('VALID ACTIONS FOR PAWN', () => {
     // TEST 4.2
     test("WHITE PAWN CAN CAPTURE BLACK PAWN IN FLIGHT", () => {
         //given
-        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(1, 1));
-        const bPawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(3,2));
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(3, 2));
+        const bPawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(1,1));
         const board = new Board();
         board.addPiece(wPawn);
         board.addPiece(bPawn);
@@ -210,8 +210,8 @@ describe('VALID ACTIONS FOR PAWN', () => {
     // TEST 4.3
     test("WHITE PAWN CAN'T CAPTURE BLACK PAWN IN FLIGHT", () => {
         //given
-        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(2, 0));
-        const bPawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(3,1));
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(3, 1));
+        const bPawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(2,0));
         const board = new Board();
         board.addPiece(wPawn);
         board.addPiece(bPawn);
@@ -225,8 +225,8 @@ describe('VALID ACTIONS FOR PAWN', () => {
     // TEST 4.4
     test("WHITE PAWN CAN'T CAPTURE BLACK PAWN IN FLIGHT", () => {
         //given
-        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(2, 1));
-        const bPawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(3,2));
+        const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(3, 2));
+        const bPawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(2, 1));
         const board = new Board();
         board.addPiece(wPawn);
         board.addPiece(bPawn);
