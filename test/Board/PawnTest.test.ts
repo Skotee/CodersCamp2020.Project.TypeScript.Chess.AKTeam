@@ -291,7 +291,7 @@ describe('VALID ACTIONS FOR PAWN', () => {
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         
         //when
-        const newMove = new Move(new Square(1, 0), new Square(0, 1), wPawn, null);
+        const newMove = new Move(new Square(1, 1), new Square(0, 1), wPawn, null);
         // then
         expect(game.isMovePossible(newMove)).toBe(true);
         expect(newMove.isPawnPromotion()).toBe(true);
