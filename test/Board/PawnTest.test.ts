@@ -282,7 +282,7 @@ describe('VALID ACTIONS FOR PAWN', () => {
         expect(game.isMovePossible(newMove)).toBe(true);
         expect(newMove.isPawnPromotion()).toBe(true);
     });
-    // TEST 5.1
+    // TEST 5.4
     test("WHITE PAWN PROMOTION AT [0][1] 8B", () => {
         //given
         const wPawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(1, 1))
