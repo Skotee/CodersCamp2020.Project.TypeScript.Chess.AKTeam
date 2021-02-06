@@ -30,10 +30,6 @@ export abstract class Piece {
     this._placeAt = placeAt;
   }
 
-  public validMoves(): void /*List<Square>*/ {
-    /*TODO*/
-  }
-  public makeMove(): void /*Move*/ {
-    /*TODO*/
-  }
+  public abstract validMoves(): Square[];
+  public abstract updatePosition(square: Square): Move;
 }

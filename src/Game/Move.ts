@@ -5,14 +5,15 @@ export class Move {
     private _startSquare: Square;
     private _endSquare: Square;
     private _piece: Piece;
-    private _capturePiece: Piece;
+    private _capturePiece: Piece | null;
 
-    constructor(startSquare: Square, endSquare: Square, piece: Piece, capturePiece: Piece) {
+    constructor(startSquare: Square, endSquare: Square, piece: Piece, capturePiece: Piece | null) {
         this._startSquare = startSquare;
         this._endSquare = endSquare;
         this._piece = piece;
         this._capturePiece = capturePiece;
     }
+    public isPawnPromotion():boolean{return true};
 
     public get startSquare(): Square {
         return this._startSquare;
@@ -38,11 +39,14 @@ export class Move {
         this._piece = piece;
     }
 
-    public get capturePiece(): Piece {
+    public get capturePiece(): Piece | null {
         return this._capturePiece;
     }
 
-    public set capturePiece(capturePiece: Piece) {
+    public set capturePiece(capturePiece: Piece | null) {
         this._capturePiece = capturePiece;
     }
+
+    isPawnPromotion():boolean{return true};
+    is2FieldPawnMove():boolean{return true};
 }
