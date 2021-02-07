@@ -78,12 +78,12 @@ export class Game {
     this._board = board;
   }
 
-  addMove(move: Move): void {}
-  create(): void {}
+  addMove(move: Move): void { }
+  create(): void { }
   isEnded(): boolean {
     return true;
   }
-  operation(): void {}
+  operation(): void { }
   isChecked(): boolean {
     return true;
   }
@@ -96,10 +96,16 @@ export class Game {
   isMovePossible(move: Move): boolean {
     return true;
   }
-  getAvailableSquares(square:Square): Square[] {
+  getAvailableSquares(square: Square): Square[] {
     return [];
   }
   isCastle(): boolean {
+    return true;
+  }
+  checkFiftyMoveRule(): boolean {
+    return true;
+  }
+  checkTripleMoveRule(): boolean {
     return true;
   }
 }
