@@ -16,16 +16,16 @@ describe("TESTS FOR CHECKEDMATE", () => {
 
   test("BLACK KING CHECKMATED BY ROOK AND WHITE KING", () => {
     //given
-    const kWhite = new King(PieceColor.White, PieceType.King, new Square(1, 2));
-    const rWhite = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 1));
-    const kBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
+    const kingWhite = new King(PieceColor.White, PieceType.King, new Square(1, 2));
+    const rookWhite = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 1));
+    const kingBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
     const board = new Board();
-    board.addPiece(kWhite);
-    board.addPiece(rWhite);
-    board.addPiece(kBlack);
+    board.addPiece(kingWhite);
+    board.addPiece(rookWhite);
+    board.addPiece(kingBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    new Move(new Square(2,1), new Square(2,0), rWhite, null);
+    new Move(new Square(2,1), new Square(2,0), rookWhite, null);
     // then
     const gameResult = game.isCheckmated();
     expect(gameResult).toBe(true);
@@ -35,16 +35,16 @@ describe("TESTS FOR CHECKEDMATE", () => {
 
   test("BLACK KING CHECKMATE BY ROOK AND QUEEN", () => {
     //given
-    const qWhite = new Queen(PieceColor.White, PieceType.Queen, new Square(1, 2));
-    const rWhite = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 1));
-    const kBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
+    const queenWhite = new Queen(PieceColor.White, PieceType.Queen, new Square(1, 2));
+    const rookWhite = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 1));
+    const kingBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
     const board = new Board();
-    board.addPiece(qWhite);
-    board.addPiece(rWhite);
-    board.addPiece(kBlack);
+    board.addPiece(queenWhite);
+    board.addPiece(rookWhite);
+    board.addPiece(kingBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(2,1), new Square(0,1), rWhite, null);
+    const checkMateMove = new Move(new Square(2,1), new Square(0,1), rookWhite, null);
     // then
     const gameResult = game.isCheckmated();
     expect(gameResult).toBe(true);
@@ -54,16 +54,16 @@ describe("TESTS FOR CHECKEDMATE", () => {
 
   test("BLACK KING IS NOT CHECKAMTED, BUT SHOULD BE CHECKED", () => {
     //given
-    const kWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
-    const rWhite = new Rook(PieceColor.White, PieceType.Rook, new Square(1, 1));
-    const kBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
+    const kingWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
+    const rookWhite = new Rook(PieceColor.White, PieceType.Rook, new Square(1, 1));
+    const kingBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
     const board = new Board();
-    board.addPiece(kWhite);
-    board.addPiece(rWhite);
-    board.addPiece(kBlack);
+    board.addPiece(kingWhite);
+    board.addPiece(rookWhite);
+    board.addPiece(kingBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(1,1), new Square(1,0), rWhite, null);
+    const checkMateMove = new Move(new Square(1,1), new Square(1,0), rookWhite, null);
     // then
     const checkMateResult = game.isCheckmated();
     const checkResult = game.isChecked();
@@ -75,18 +75,18 @@ describe("TESTS FOR CHECKEDMATE", () => {
 
   test("BLACK KING CHECKMATED BY TWO ROOKS", () => {
     //given
-    const kWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
-    const r1White = new Rook(PieceColor.White, PieceType.Rook, new Square(3, 1));
-    const r2White = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 2));
-    const kBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
+    const kingWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
+    const rookWhite1 = new Rook(PieceColor.White, PieceType.Rook, new Square(3, 1));
+    const rookWhite2 = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 2));
+    const kingBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
     const board = new Board();
-    board.addPiece(r2White);
-    board.addPiece(r1White);
-    board.addPiece(kBlack);
-    board.addPiece(kWhite);
+    board.addPiece(rookWhite2);
+    board.addPiece(rookWhite1);
+    board.addPiece(kingBlack);
+    board.addPiece(kingWhite);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(2,2), new Square(2,0), r2White, null);
+    const checkMateMove = new Move(new Square(2,2), new Square(2,0), rookWhite2, null);
     // then
     const gameResult = game.isCheckmated();
     expect(gameResult).toBe(true);
@@ -95,18 +95,18 @@ describe("TESTS FOR CHECKEDMATE", () => {
 
   test("BLACK KING CHECKMATE BY TWO ROOKS", () => {
     //given
-    const kWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
-    const r1White = new Rook(PieceColor.White, PieceType.Rook, new Square(4, 1));
-    const r2White = new Rook(PieceColor.White, PieceType.Rook, new Square(3, 2));
-    const kBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
+    const kingWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
+    const rookWhite1 = new Rook(PieceColor.White, PieceType.Rook, new Square(4, 1));
+    const rookWhite2 = new Rook(PieceColor.White, PieceType.Rook, new Square(3, 2));
+    const kingBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
     const board = new Board();
-    board.addPiece(r2White);
-    board.addPiece(r1White);
-    board.addPiece(kBlack);
-    board.addPiece(kWhite);
+    board.addPiece(rookWhite2);
+    board.addPiece(rookWhite1);
+    board.addPiece(kingBlack);
+    board.addPiece(kingWhite);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(3,2), new Square(3,0), r2White, null);
+    const checkMateMove = new Move(new Square(3,2), new Square(3,0), rookWhite2, null);
     // then
     const gameResult = game.isCheckmated();
     expect(gameResult).toBe(true);
@@ -115,16 +115,16 @@ describe("TESTS FOR CHECKEDMATE", () => {
 
   test("BLACK KING IS NOT CHECKAMTED, BUT SHOULD BE CHECKED", () => {
     //given
-    const kWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
-    const rWhite = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 1));
-    const kBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
+    const kingWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
+    const rookWhite = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 1));
+    const kingBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
     const board = new Board();
-    board.addPiece(kWhite);
-    board.addPiece(rWhite);
-    board.addPiece(kBlack);
+    board.addPiece(kingWhite);
+    board.addPiece(rookWhite);
+    board.addPiece(kingBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(2,1), new Square(2,0), rWhite, null);
+    const checkMateMove = new Move(new Square(2,1), new Square(2,0), rookWhite, null);
     // then
     const checkMateResult = game.isCheckmated();
     const checkResult = game.isChecked();
@@ -135,16 +135,16 @@ describe("TESTS FOR CHECKEDMATE", () => {
 
   test("BLACK KING IS NOT CHECKAMTED", () => {
     //given
-    const kWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
-    const rWhite = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 1));
-    const kBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
+    const kingWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
+    const rookWhite = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 1));
+    const kingBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
     const board = new Board();
-    board.addPiece(kWhite);
-    board.addPiece(rWhite);
-    board.addPiece(kBlack);
+    board.addPiece(kingWhite);
+    board.addPiece(rookWhite);
+    board.addPiece(kingBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(2,1), new Square(2,7), rWhite, null);
+    const checkMateMove = new Move(new Square(2,1), new Square(2,7), rookWhite, null);
     // then
     const checkMateResult = game.isCheckmated();
     const checkResult = game.isChecked();
@@ -155,20 +155,20 @@ describe("TESTS FOR CHECKEDMATE", () => {
 
   test("BLACK KING IS NOT CHECKAMTED, BECAUSE HE CAN BE COVERED BY BLACK ROOK", () => {
     //given
-    const kWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
-    const r1White = new Rook(PieceColor.White, PieceType.Rook, new Square(6, 1));
-    const r2White = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 1));
-    const rBlack = new Rook(PieceColor.Black, PieceType.Rook, new Square(1, 7));
-    const kBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
+    const kingWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
+    const rookWhite1 = new Rook(PieceColor.White, PieceType.Rook, new Square(6, 1));
+    const rookWhite2 = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 1));
+    const rookBlack = new Rook(PieceColor.Black, PieceType.Rook, new Square(1, 7));
+    const kingBlack = new King(PieceColor.Black, PieceType.King, new Square(0, 0));
     const board = new Board();
-    board.addPiece(kWhite);
-    board.addPiece(r1White);
-    board.addPiece(r2White);
-    board.addPiece(rBlack);
-    board.addPiece(kBlack);
+    board.addPiece(kingWhite);
+    board.addPiece(rookWhite1);
+    board.addPiece(rookWhite2);
+    board.addPiece(rookBlack);
+    board.addPiece(kingBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(6,1), new Square(6,0), r1White, null);
+    const checkMateMove = new Move(new Square(6,1), new Square(6,0), rookWhite1, null);
     // then
     const checkMateResult = game.isCheckmated();
     const checkResult = game.isChecked();
