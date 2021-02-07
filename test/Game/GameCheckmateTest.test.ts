@@ -25,7 +25,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
     board.addPiece(kBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(2,1), new Square(2,0), rWhite, null);
+    new Move(new Square(2,1), new Square(2,0), rWhite, null);
     // then
     const gameResult = game.isCheckmated();
     expect(gameResult).toBe(true);
