@@ -206,7 +206,7 @@ describe("End game rules", () => {
     //TEST 3-3
     test("Check triple move (3)", () => {
         //given
-        const bKing = new King(PieceColor.Black, PieceType.King, new Square(6, 5));
+        const bKing = new King(PieceColor.Black, PieceType.King, new Square(6, 6));
         const wBishop = new Bishop(PieceColor.White, PieceType.Bishop, new Square(7, 0));
         const board = new Board();
         board.addPiece(bKing);
