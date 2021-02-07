@@ -1,6 +1,7 @@
 import { PieceColor } from "../../src/Board/PieceColorEnum";
 import { PieceType } from "../../src/Board/PieceTypeEnum";
 import { Board } from "../../src/Board/Board";
+import { Move } from "../../src/Game/Move";
 import { Square } from "../../src/Board/Square";
 import { Game } from "../../src/Game/Game";
 import { Rook } from "../../src/Board/Rook";
@@ -77,6 +78,7 @@ describe("Tests for Castle (Roszada)", () => {
     board.addPiece(king);
     board.addPiece(rook);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+    new Move(new Square(7, 4), new Square(7, 3), king, null);
     //when
     const castleMove = game.isCastlePossible();
     //then
@@ -92,6 +94,7 @@ describe("Tests for Castle (Roszada)", () => {
     board.addPiece(king);
     board.addPiece(rook);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+    new Move(new Square(7, 4), new Square(6, 3), king, null);
     //when
     const castleMove = game.isCastlePossible();
     //then
@@ -107,6 +110,7 @@ describe("Tests for Castle (Roszada)", () => {
     board.addPiece(king);
     board.addPiece(rook);
     const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
+    new Move(new Square(0, 0), new Square(2, 0), rook, null);
     //when
     const castleMove = game.isCastlePossible();
     //then
@@ -122,6 +126,7 @@ describe("Tests for Castle (Roszada)", () => {
     board.addPiece(king);
     board.addPiece(rook);
     const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
+    new Move(new Square(0, 7), new Square(2, 7), rook, null);
     //when
     const castleMove = game.isCastlePossible();
     //then
