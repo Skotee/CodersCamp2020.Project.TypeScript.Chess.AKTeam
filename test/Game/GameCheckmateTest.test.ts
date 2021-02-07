@@ -73,7 +73,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
 
   //TEST 4//
 
-  test("BLACK KING CHECKMATE BY TWO ROOKS", () => {
+  test("BLACK KING CHECKMATED BY TWO ROOKS", () => {
     //given
     const kWhite = new King(PieceColor.White, PieceType.King, new Square(7, 7));
     const r1White = new Rook(PieceColor.White, PieceType.Rook, new Square(3, 1));
