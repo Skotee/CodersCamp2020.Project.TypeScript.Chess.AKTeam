@@ -99,7 +99,7 @@ export class Game {
   getAvailableSquares(square:Square): Square[] {
     return [];
   }
-  isCastle(): boolean {
+  isCastlePossible(): boolean {
     return true;
   }
 }

@@ -13,7 +13,6 @@ export class Move {
         this._piece = piece;
         this._capturePiece = capturePiece;
     }
-    public isPawnPromotion():boolean{return true};
 
     public get startSquare(): Square {
         return this._startSquare;
