@@ -167,18 +167,16 @@ describe("End game rules", () => {
         board.addPiece(wBishop);
         const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
         //when
-        let newMove1 = new Move(new Square(3, 6), new Square(2, 6), bRook, null);
-        let newMove2 = new Move(new Square(4, 1), new Square(5, 1), wBishop, null);
-        let newMove3 = new Move(new Square(2, 6), new Square(3, 6), bRook, null);
-        let newMove4 = new Move(new Square(5, 1), new Square(4, 1), wBishop, null);
-        let newMove5 = new Move(new Square(3, 6), new Square(2, 6), bRook, null);
-        let newMove6 = new Move(new Square(4, 1), new Square(5, 1), wBishop, null);
-        let newMove7 = new Move(new Square(2, 6), new Square(3, 6), bRook, null);
-        let newMove8 = new Move(new Square(5, 1), new Square(4, 1), wBishop, null);
-        let newMove9 = new Move(new Square(3, 6), new Square(2, 6), bRook, null);
-        let newMove10 = new Move(new Square(4, 1), new Square(5, 1), wBishop, null);
-        let newMove11 = new Move(new Square(2, 6), new Square(3, 6), bRook, null);
-        let newMove12 = new Move(new Square(5, 1), new Square(4, 1), wBishop, null);
+        let blackMove1 = new Move(new Square(3, 6), new Square(2, 6), bRook, null);
+        let whiteMove1 = new Move(new Square(4, 1), new Square(5, 1), wBishop, null);
+        let blackMove2 = new Move(new Square(2, 6), new Square(3, 6), bRook, null);
+        let whiteMove2 = new Move(new Square(5, 1), new Square(4, 1), wBishop, null);
+        let blackMove3 = new Move(new Square(3, 6), new Square(2, 6), bRook, null);
+        let whiteMove3 = new Move(new Square(4, 1), new Square(5, 1), wBishop, null);
+        let blackMove4 = new Move(new Square(2, 6), new Square(3, 6), bRook, null);
+        let whiteMove4 = new Move(new Square(5, 1), new Square(4, 1), wBishop, null);
+        let blackMove5 = new Move(new Square(3, 6), new Square(2, 6), bRook, null);
+        let whiteMove5 = new Move(new Square(4, 1), new Square(5, 1), wBishop, null);
         //then
         expect(game.checkTripleMoveRule()).toBe(true);
     });
@@ -192,19 +190,16 @@ describe("End game rules", () => {
         board.addPiece(wRook);
         const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
         //when
-        let newMove1 = new Move(new Square(2, 1), new Square(5, 1), bQueen, null);
-        let newMove2 = new Move(new Square(1, 4), new Square(1, 6), wRook, null);
-        let newMove3 = new Move(new Square(5, 1), new Square(2, 1), bQueen, null);
-        let newMove4 = new Move(new Square(1, 6), new Square(1, 4), wRook, null);
-        let newMove5 = new Move(new Square(2, 1), new Square(5, 1), bQueen, null);
-        let newMove6 = new Move(new Square(1, 4), new Square(1, 6), wRook, null);
-        let newMove7 = new Move(new Square(5, 1), new Square(2, 1), bQueen, null);
-        let newMove8 = new Move(new Square(1, 6), new Square(1, 4), wRook, null);
-        let newMove9 = new Move(new Square(2, 1), new Square(5, 1), bQueen, null);
-        let newMove10 = new Move(new Square(1, 4), new Square(1, 6), wRook, null);
-        let newMove11 = new Move(new Square(5, 1), new Square(2, 1), bQueen, null);
-        let newMove12 = new Move(new Square(1, 6), new Square(1, 4), wRook, null);
-
+        let blackMove1 = new Move(new Square(2, 1), new Square(5, 1), bQueen, null);
+        let whiteMove1 = new Move(new Square(1, 4), new Square(1, 6), wRook, null);
+        let blackMove2 = new Move(new Square(5, 1), new Square(2, 1), bQueen, null);
+        let whiteMove2 = new Move(new Square(1, 6), new Square(1, 4), wRook, null);
+        let blackMove3 = new Move(new Square(2, 1), new Square(5, 1), bQueen, null);
+        let whiteMove3 = new Move(new Square(1, 4), new Square(1, 6), wRook, null);
+        let blackMove4 = new Move(new Square(5, 1), new Square(2, 1), bQueen, null);
+        let whiteMove4 = new Move(new Square(1, 6), new Square(1, 4), wRook, null);
+        let blackMove5 = new Move(new Square(2, 1), new Square(5, 1), bQueen, null);
+        let whiteMove5 = new Move(new Square(1, 4), new Square(1, 6), wRook, null);
         //then
         expect(game.checkTripleMoveRule()).toBe(true);
     });
@@ -218,18 +213,16 @@ describe("End game rules", () => {
         board.addPiece(wBishop);
         const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
         //when
-        let newMove1 = new Move(new Square(6, 6), new Square(6, 7), bKing, null);
-        let newMove2 = new Move(new Square(7, 0), new Square(5, 2), wBishop, null);
-        let newMove3 = new Move(new Square(6, 7), new Square(6, 6), bKing, null);
-        let newMove4 = new Move(new Square(5, 2), new Square(7, 0), wBishop, null);
-        let newMove5 = new Move(new Square(6, 6), new Square(6, 7), bKing, null);
-        let newMove6 = new Move(new Square(7, 0), new Square(5, 2), wBishop, null);
-        let newMove7 = new Move(new Square(6, 7), new Square(6, 6), bKing, null);
-        let newMove8 = new Move(new Square(5, 2), new Square(7, 0), wBishop, null);
-        let newMove9 = new Move(new Square(6, 6), new Square(6, 7), bKing, null);
-        let newMove10 = new Move(new Square(7, 0), new Square(5, 2), wBishop, null);
-        let newMove11 = new Move(new Square(6, 7), new Square(6, 6), bKing, null);
-        let newMove12 = new Move(new Square(5, 2), new Square(7, 0), wBishop, null);
+        let blackMove1 = new Move(new Square(6, 6), new Square(6, 7), bKing, null);
+        let whiteMove1 = new Move(new Square(7, 0), new Square(5, 2), wBishop, null);
+        let blackMove2 = new Move(new Square(6, 7), new Square(6, 6), bKing, null);
+        let whiteMove2 = new Move(new Square(5, 2), new Square(7, 0), wBishop, null);
+        let blackMove3 = new Move(new Square(6, 6), new Square(6, 7), bKing, null);
+        let whiteMove3 = new Move(new Square(7, 0), new Square(5, 2), wBishop, null);
+        let blackMove4 = new Move(new Square(6, 7), new Square(6, 6), bKing, null);
+        let whiteMove4 = new Move(new Square(5, 2), new Square(7, 0), wBishop, null);
+        let blackMove5 = new Move(new Square(6, 6), new Square(6, 7), bKing, null);
+        let whiteMove5 = new Move(new Square(7, 0), new Square(5, 2), wBishop, null);
         //then
         expect(game.checkTripleMoveRule()).toBe(true);
     });
@@ -237,25 +230,23 @@ describe("End game rules", () => {
     //TEST 3-4
     test("Check triple move (4)", () => {
         //given
-        const bKing = new King(PieceColor.Black, PieceType.King, new Square(6, 5));
+        const bKing = new King(PieceColor.Black, PieceType.King, new Square(6, 6));
         const wBishop = new Bishop(PieceColor.White, PieceType.Bishop, new Square(7, 0));
         const board = new Board();
         board.addPiece(bKing);
         board.addPiece(wBishop);
         const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
         //when
-        let newMove1 = new Move(new Square(6, 6), new Square(6, 7), bKing, null);
-        let newMove2 = new Move(new Square(7, 0), new Square(5, 2), wBishop, null);
-        let newMove3 = new Move(new Square(6, 7), new Square(6, 6), bKing, null);
-        let newMove4 = new Move(new Square(5, 2), new Square(7, 0), wBishop, null);
-        let newMove5 = new Move(new Square(6, 6), new Square(6, 7), bKing, null);
-        let newMove6 = new Move(new Square(7, 0), new Square(5, 2), wBishop, null);
-        let newMove7 = new Move(new Square(6, 7), new Square(6, 6), bKing, null);
-        let newMove8 = new Move(new Square(5, 2), new Square(7, 0), wBishop, null);
-        let newMove9 = new Move(new Square(6, 6), new Square(5, 6), bKing, null);
-        let newMove10 = new Move(new Square(7, 0), new Square(5, 2), wBishop, null);
-        let newMove11 = new Move(new Square(5, 6), new Square(6, 6), bKing, null);
-        let newMove12 = new Move(new Square(5, 2), new Square(7, 0), wBishop, null);
+        let blackMove1 = new Move(new Square(6, 6), new Square(6, 7), bKing, null);
+        let whiteMove1 = new Move(new Square(7, 0), new Square(5, 2), wBishop, null);
+        let blackMove2 = new Move(new Square(6, 7), new Square(6, 6), bKing, null);
+        let whiteMove2 = new Move(new Square(5, 2), new Square(7, 0), wBishop, null);
+        let blackMove3 = new Move(new Square(6, 6), new Square(6, 7), bKing, null);
+        let whiteMove3 = new Move(new Square(7, 0), new Square(5, 2), wBishop, null);
+        let blackMove4 = new Move(new Square(6, 7), new Square(6, 6), bKing, null);
+        let whiteMove4 = new Move(new Square(5, 2), new Square(7, 0), wBishop, null);
+        let blackMove5 = new Move(new Square(6, 6), new Square(5, 6), bKing, null);
+        let whiteMove5 = new Move(new Square(7, 0), new Square(5, 2), wBishop, null);
         //then
         expect(game.checkTripleMoveRule()).toBe(false);
     });
