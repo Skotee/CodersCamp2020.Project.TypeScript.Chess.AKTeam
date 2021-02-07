@@ -14,7 +14,7 @@ import { Move } from "../../src/Game/Move";
 describe("TESTS FOR CHECKEDMATE", () => {
   //TEST 1//
 
-  test("BLACK KING CHECKMATE BY ROOK AND WHITE KING", () => {
+  test("BLACK KING CHECKMATED BY ROOK AND WHITE KING", () => {
     //given
     const kWhite = new King(PieceColor.White, PieceType.King, new Square(1, 2));
     const rWhite = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 1));
