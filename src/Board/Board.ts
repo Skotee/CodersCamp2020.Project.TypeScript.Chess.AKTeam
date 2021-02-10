@@ -3,9 +3,9 @@ import { Rook } from "./Rook";
 import { Piece } from "./Piece";
 import { PieceType } from "./PieceTypeEnum";
 import { Square } from "./Square";
-import { Move } from "../Game/Move";
+
 import { Pawn } from "./Pawn";
-import { Game } from "../Game/Game";
+
 import { Knight } from "./Knight";
 import { Queen } from "./Queen";
 import { King } from "./King";
