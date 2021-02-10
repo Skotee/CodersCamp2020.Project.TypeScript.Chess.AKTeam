@@ -5,6 +5,9 @@ import { Result } from "./ResultEnum";
 import { CheckStatus } from "./CheckStatusEnum";
 import { Board } from "../Board/Board";
 import { Square } from "../Board/Square";
+import { King } from "../Board/King";
+import { PieceType } from "../Board/PieceTypeEnum";
+import { Piece } from "../Board/Piece";
 
 export class Game {
   private _playedMoves: Move[];
@@ -79,11 +82,10 @@ export class Game {
   }
 
   addMove(move: Move): void { }
-  create(): void { }
+
   isEnded(): boolean {
     return true;
   }
-  operation(): void { }
   isChecked(): boolean {
     return true;
   }
@@ -107,5 +109,8 @@ export class Game {
   }
   checkTripleMoveRule(): boolean {
     return true;
+  }
+  pawnPromotion(): Piece {
+    return new King(PieceColor.Black, PieceType.King, new Square(6,6));
   }
 }

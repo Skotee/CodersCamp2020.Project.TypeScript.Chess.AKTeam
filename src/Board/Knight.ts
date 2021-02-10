@@ -10,12 +10,14 @@ export class Knight extends Piece {
   }
 
   public validMoves(): Square[] {
-    /*TO DO*/
-    return [];
+    const directions = [
+      [-2, 1], [-1, 2], [1, 2],
+      [2, 1], [2, -1],
+      [1, -2], [-1, -2], [-2, 1]
+    ];
+
+    return directions.map(([y, x]) => new Square(this.placeAt.row + y, this.placeAt.column + x));
   }
 
-  public updatePosition(square: Square): Move {
-    /*TO DO*/
-    return new Move(this.placeAt, square, this, null);
-  }
+  
 }

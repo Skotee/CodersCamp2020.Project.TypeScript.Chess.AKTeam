@@ -3,9 +3,7 @@ import { Rook } from "./Rook";
 import { Piece } from "./Piece";
 import { PieceType } from "./PieceTypeEnum";
 import { Square } from "./Square";
-
 import { Pawn } from "./Pawn";
-
 import { Knight } from "./Knight";
 import { Queen } from "./Queen";
 import { King } from "./King";

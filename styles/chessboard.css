@@ -56,3 +56,41 @@ img {
   margin: 0 auto;
   padding: 10%;
 }
+
+.pawn-black {
+  background-image: url("./images/pawn-black.png");
+}
+.rook-black {
+  background-image: url("./images/rook-black.png");
+}
+.knight-black {
+  background-image: url("./images/knight-black.png");
+}
+.bishop-black {
+  background-image: url("./images/rook-black.png");
+}
+.queen-black {
+  background-image: url("./images/rook-black.png");
+}
+.king-black {
+  background-image: url("./images/rook-black.png");
+}
+
+.pawn-white {
+  background-image: url("./images/pawn-white.png");
+}
+.rook-white {
+  background-image: url("./images/rook-white.png");
+}
+.knight-white {
+  background-image: url("./images/knight-white.png");
+}
+.bishop-white {
+  background-image: url("./images/rook-white.png");
+}
+.queen-white {
+  background-image: url("./images/rook-white.png");
+}
+.king-white {
+  background-image: url("./images/rook-white.png");
+}

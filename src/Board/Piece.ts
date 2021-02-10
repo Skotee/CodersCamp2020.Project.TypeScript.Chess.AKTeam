@@ -31,5 +31,8 @@ export abstract class Piece {
   }
 
   public abstract validMoves(): Square[];
-  public abstract updatePosition(square: Square): Move;
+
+  public updatePosition(square: Square): void {
+    this.placeAt = square;
+  }
 }
