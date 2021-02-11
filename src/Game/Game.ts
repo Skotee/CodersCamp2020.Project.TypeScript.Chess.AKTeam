@@ -84,8 +84,14 @@ export class Game {
   addMove(move: Move): void { }
 
   isEnded(): boolean {
-    return true;
-  }
+      if ((this.isStalemated() == true) || (this.isCheckmated() == true) || (this.checkTripleMoveRule() == true) ||
+        (this.checkFiftyMoveRule() == true)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
   isChecked(): boolean {
     return true;
   }
@@ -95,22 +101,76 @@ export class Game {
   isStalemated(): boolean {
     return true;
   }
-  isMovePossible(move: Move): boolean {
+  getAvailableSquares(piece: Piece): Square[] {
+    let allSquares:Square[] = piece.validMoves();
+    let availableSquares:Square[] = [];
+    availableSquares.forEach((e) => {
+      if(this.isMovePossible(new Move(piece.placeAt, e, piece, null))){
+        availableSquares.push(e);
+      }
+    })
+    
+    return availableSquares;
+  }
+
+  isCastlePossible(): boolean { 
     return true;
+   }
+
+
+  checkFiftyMoveRule(): boolean { //czy zasada 50 ruchów bez bicia lub ruchu pionem jest prawdziwa
+    const movesArray = this.playedMoves;
+    if (movesArray.length >= 100) {
+      for (let i = 0; i < movesArray.length; i++) {
+        if ((movesArray[i].capturePiece != null) || (movesArray[i].piece.pieceType == PieceType.Pawn)) {
+          return false;
+        }
+      }
+      return true;
+    } else {
+      return false;
+    }
   }
-  getAvailableSquares(square: Square): Square[] {
-    return [];
-  }
-  isCastlePossible(): boolean {
-    return true;
-  }
-  checkFiftyMoveRule(): boolean {
-    return true;
-  }
+
   checkTripleMoveRule(): boolean {
     return true;
   }
   pawnPromotion(): Piece {
     return new King(PieceColor.Black, PieceType.King, new Square(6,6));
+  }
+
+  isMovePossiblePawn(move: Move): boolean{return true;}
+  isMovePossibleRook(move: Move): boolean{return true;}
+  isMovePossibleKnight(move: Move): boolean{return true;}
+  isMovePossibleBishop(move: Move): boolean{return true;}
+  isMovePossibleKing(move: Move): boolean{return true;}
+  isMovePossibleQueen(move: Move): boolean{return true;}
+
+  
+  isMovePossible(move: Move): boolean {
+    let pieceType = move.piece.pieceType;
+    switch (pieceType) {
+      case PieceType.Pawn:
+        return this.isMovePossiblePawn(move);
+        
+      case PieceType.Rook:
+        return this.isMovePossibleRook(move);
+        
+      case PieceType.Knight:
+        return this.isMovePossibleKnight(move);
+        
+      case PieceType.Bishop:
+        return this.isMovePossibleBishop(move);
+        
+      case PieceType.King:
+        return this.isMovePossibleKing(move);
+        
+      case PieceType.Queen:
+        return this.isMovePossibleQueen(move);
+        
+      default:
+        return false;    
+    }
+     //sprawdza czy nowy ruch - endSquare:Square z klasy Move, znajduje sie w tablicy, którą zwraca getAvailableSquares(square: Square): Square[]
   }
 }

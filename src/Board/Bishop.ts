@@ -12,9 +12,9 @@ export class Bishop extends Piece {
   public validMoves(): Square[] {
     let moves: Square[] = [];
     let currentPosition:Square = this.placeAt;
-    for (let row = 0; row < 8; row++) { //|x2−x1|=|y2−y1|>0
+    for (let row = 0; row < 8; row++) { 
       for (let col = 0; col < 8; col++) {
-        if(Math.abs(currentPosition.row-row) === Math.abs(currentPosition.column - col)){
+        if(Math.abs(currentPosition.row-row) === Math.abs(currentPosition.column - col)){ //|x2−x1|=|y2−y1|>0
           moves.push(new Square(row,col))
         }         
       }   
