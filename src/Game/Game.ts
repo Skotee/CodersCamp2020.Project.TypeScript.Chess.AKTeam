@@ -142,14 +142,16 @@ export class Game {
     let moveRange = Math.abs(Math.max(move.endSquare.row-move.startSquare.row,move.endSquare.row-move.startSquare.column)) // trzy pola, 
 
     for(let i = 1; i++;  i<moveRange)
-      if(this.board.isSquareFree(new Square(move.startSquare.row + i * directionX,move.startSquare.column+ i * directionY))){return false}//pole jest zajęte 
+      if(this.board.isSquareFree(new Square(move.startSquare.row + i * directionX,move.startSquare.column+ i * directionY))){
+        return false
+      }//pole jest zajęte 
     return true
   }
   isMovePossiblePawn(move: Move): boolean{
     return this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor);
   }
   isMovePossibleRookBishopQueen(move: Move): boolean{
-    return this.isFreeRoute(move);
+    return this.isFreeRoute(move) && (this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
   isMovePossibleKnight(move: Move): boolean{
     return this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor);
