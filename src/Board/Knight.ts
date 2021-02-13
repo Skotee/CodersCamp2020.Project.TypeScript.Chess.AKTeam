@@ -16,7 +16,7 @@ export class Knight extends Piece {
       [1, -2], [-1, -2], [-2, 1]
     ];
 
-    return directions.map(([y, x]) => new Square(this.placeAt.row + y, this.placeAt.column + x));
+    return directions.map(([y, x]) => new Square(this.placeAt.row + y, this.placeAt.column + x)); // dodac warunki sprawdzajace dla skoczka czy validMoves sa na planszy
   }
 
   
