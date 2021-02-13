@@ -79,9 +79,13 @@ describe("End game rules", () => {
         // when
         for (let i = 0; i < 25; i++) {
             let newMove1 = new Move(new Square(3, 6), new Square(2, 6), bRook, null);
+            game.addMove(newMove1);
             let newMove2 = new Move(new Square(4, 1), new Square(5, 1), wBishop, null);
+            game.addMove(newMove2);
             let newMove3 = new Move(new Square(2, 6), new Square(3, 6), bRook, null);
+            game.addMove(newMove3);
             let newMove4 = new Move(new Square(5, 1), new Square(4, 1), wBishop, null);
+            game.addMove(newMove4);
         }
         //then
         expect(game.checkFiftyMoveRule()).toBe(true);

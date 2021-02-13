@@ -6,21 +6,23 @@ import { Move } from "../Game/Move";
 import { MoveDirection } from "./MoveDirectionEnum";
 
 export class Pawn extends Piece {
-  private moveDirection:MoveDirection;
+  // private moveDirection:MoveDirection;
   private promoted = false; // do przemyslenia jeszcze jak chcemy rozwiazac
   constructor(pieceColor: PieceColor, pieceType: PieceType, placeAt: Square) {
     super(pieceColor, pieceType, placeAt);
-    (pieceColor === PieceColor.White) ? this.moveDirection=MoveDirection.ascending : this.moveDirection=MoveDirection.descending;
+    // (pieceColor === PieceColor.White) ? this.moveDirection=MoveDirection.ascending : this.moveDirection=MoveDirection.descending;
   }
 
   public validMoves(): Square[] {
-    /*TO DO*/
-    return [];
-  }
+    const directionsForWhite = [
+                [-2, 0],
+      [-1, -1], [-1, 0], [-1, 1],
+    ];
+    const directionsForBlack = [
+    [1, 1], [1, 0], [1, 1],
+            [2, 0], 
+    ];
 
-  public updatePosition(square: Square): Move {
-    /*TO DO*/
-    return new Move(this.placeAt, square, this, null);
+    return ((this.pieceColor === PieceColor.White) ? directionsForWhite : directionsForBlack).map(([y, x]) => new Square(this.placeAt.row + y, this.placeAt.column + x));
   }
-
 }

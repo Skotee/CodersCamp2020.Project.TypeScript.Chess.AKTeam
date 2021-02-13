@@ -3,39 +3,59 @@ import { Rook } from "./Rook";
 import { Piece } from "./Piece";
 import { PieceType } from "./PieceTypeEnum";
 import { Square } from "./Square";
-
 import { Pawn } from "./Pawn";
-
 import { Knight } from "./Knight";
 import { Queen } from "./Queen";
 import { King } from "./King";
 import { Bishop } from "./Bishop";
 
 export class Board {
-  private _squares: Piece[][];
+  private _piecesOnBoard: Piece[][];
+  private _squares: (Piece | undefined)[][];
   
   constructor(
-    squares: Piece[][] = [[],[]],
+    squares: Piece[][] = [],
+    pieces: Piece[][] = [[],[]],
   ) {
     this._squares = squares;
+    this._piecesOnBoard = pieces;
+    
+    for(var i: number = 0; i < 8; i++) 
+      {
+        this._squares[i] = [];
+        for(var j: number = 0; j< 8; j++) 
+          {
+             this._squares[i][j] = undefined;
+          }
+      }
   }
-
-  public get squares(): Piece[][] {
+  public get squares(): (Piece|undefined)[][] {
     return this._squares;
   }
 
-  public set squares(squares: Piece[][]) {
+  public set squares(squares: (Piece|undefined)[][]) {
     this._squares = squares;
+  }
+
+  public set piecesOnBoard(pieces: Piece[][]) {
+    this._piecesOnBoard = pieces;
+  }
+
+  public get piecesOnBoard(): Piece[][] {
+    return this._piecesOnBoard;
   }
 
   public addPiece(piece: Piece): void {
     if(piece.pieceColor === PieceColor.White){
-      this._squares[0].push(piece);
+      this._piecesOnBoard[0].push(piece);
+      
     }
     else{
-      this._squares[1].push(piece)
+      this._piecesOnBoard[1].push(piece)
+      
     }
-    
+    this._squares[piece.placeAt.row][piece.placeAt.column] = piece;
+
   }
 
   public getPieceSet(pieceColor: PieceColor):Piece[]{
@@ -67,5 +87,12 @@ export class Board {
     }
     this.addPiece(new Queen(PieceColor.White, PieceType.Queen, new Square(7, 3))) 
     this.addPiece(new King(PieceColor.White, PieceType.King, new Square(7, 4))) 
+  }
+  public isSquareFree(square: Square):boolean{
+    return (this._squares[square.row][square.column] == undefined); 
+  }
+  public isOppositeColor(square: Square, color: PieceColor): boolean{
+    
+    return !(this._squares[square.row][square.column]?.pieceColor == color);
   }
 }

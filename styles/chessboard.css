@@ -1,9 +1,20 @@
 @import "./reset.css";
 
+body {
+  background-image: url(https://img1.goodfon.com/original/1920x1200/b/59/stol-starina-retro-cveta.jpg);
+}
+
 .cheesboard {
   height: var(--cheesboard-height);
   width: var(--cheesboard-width);
-  margin-top: 2rem;
+  margin-top: 10rem;
+  box-shadow: 90px 90px 40px rgba(20, 17, 17, 0.822);
+}
+
+.field {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 .field-container {
@@ -22,14 +33,24 @@
   background-color: var(--white-field-background);
 }
 
+.highlight {
+  background: linear-gradient(rgba(206, 220, 14, 0.5), rgba(224, 193, 19, 0.767)),
+  linear-gradient(white, white); /* first bg is on top of this */
+}
+
 .number-label {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.number-label, .letter-label {
+  background: linear-gradient(rgb(255, 255, 255), rgba(80, 79, 67, 0.767)),
+  linear-gradient(white, white); /* first bg is on top of this */
+}
+
 [class$="-label"] {
-  font-size: 0.2rem;
+  /* font-size: 1rem; */
   text-align: center;
 }
 
@@ -55,4 +76,52 @@ img {
   max-height: 100%;
   margin: 0 auto;
   padding: 10%;
+}
+
+.pawn-black {
+  background-image: url("../images/pawn-black.png");
+}
+
+.rook-black {
+  background-image: url("../images/rook-black.png");
+}
+
+.knight-black {
+  background-image: url("../images/knight-black.png");
+}
+
+.bishop-black {
+  background-image: url("../images/bishop-black.png");
+}
+
+.queen-black {
+  background-image: url("../images/queen-black.png");
+}
+
+.king-black {
+  background-image: url("../images/king-black.png");
+}
+
+.pawn-white {
+  background-image: url("../images/pawn-white.png");
+}
+
+.rook-white {
+  background-image: url("../images/rook-white.png");
+}
+
+.knight-white {
+  background-image: url("../images/knight-white.png");
+}
+
+.bishop-white {
+  background-image: url("../images/bishop-white.png");
+}
+
+.queen-white {
+  background-image: url("../images/queen-white.png");
+}
+
+.king-white {
+  background-image: url("../images/king-white.png");
 }
