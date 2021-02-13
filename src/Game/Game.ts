@@ -112,7 +112,6 @@ export class Game {
         availableSquares.push(e);
       }
     })
-
     return availableSquares;
   }
 
@@ -125,7 +124,7 @@ export class Game {
     const pieceColor = move.piece.pieceColor;
     const start = move.startSquare;
     const end = move.endSquare;
-    const piecesArray = this._board.squares;
+    const piecesArray = this._board.piecesOnBoard;
     const playedMoves = this._playedMoves;
 
     if (pieceType == PieceType.King) { //czy to na pewno król
@@ -225,13 +224,29 @@ export class Game {
   pawnPromotion(): Piece {
     return new King(PieceColor.Black, PieceType.King, new Square(6, 6));
   }
+  isFreeRoute(move: Move): boolean {
+    let directionX = Math.sign(move.endSquare.row - move.startSquare.row)
+    let directionY = Math.sign(move.endSquare.row - move.startSquare.column)
+    let moveRange = Math.abs(Math.max(move.endSquare.row - move.startSquare.row, move.endSquare.row - move.startSquare.column)) // trzy pola, 
 
-  isMovePossiblePawn(move: Move): boolean { return true; }
-  isMovePossibleRook(move: Move): boolean { return true; }
-  isMovePossibleKnight(move: Move): boolean { return true; }
-  isMovePossibleBishop(move: Move): boolean { return true; }
-  isMovePossibleKing(move: Move): boolean { return true; }
-  isMovePossibleQueen(move: Move): boolean { return true; }
+    for (let i = 1; i++; i < moveRange)
+      if (this.board.isSquareFree(new Square(move.startSquare.row + i * directionX, move.startSquare.column + i * directionY))) {
+        return false
+      }//pole jest zajęte 
+    return true
+  }
+  isMovePossiblePawn(move: Move): boolean {
+    return this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor);
+  }
+  isMovePossibleRookBishopQueen(move: Move): boolean {
+    return this.isFreeRoute(move) && (this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor));
+  }
+  isMovePossibleKnight(move: Move): boolean {
+    return this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor);
+  }
+  isMovePossibleKing(move: Move): boolean {
+    return this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor);
+  }
 
 
   isMovePossible(move: Move): boolean {
@@ -240,20 +255,14 @@ export class Game {
       case PieceType.Pawn:
         return this.isMovePossiblePawn(move);
 
-      case PieceType.Rook:
-        return this.isMovePossibleRook(move);
+      case PieceType.Rook || PieceType.Bishop || PieceType.Queen:
+        return this.isMovePossibleRookBishopQueen(move);
 
       case PieceType.Knight:
         return this.isMovePossibleKnight(move);
 
-      case PieceType.Bishop:
-        return this.isMovePossibleBishop(move);
-
       case PieceType.King:
         return this.isMovePossibleKing(move);
-
-      case PieceType.Queen:
-        return this.isMovePossibleQueen(move);
 
       default:
         return false;
