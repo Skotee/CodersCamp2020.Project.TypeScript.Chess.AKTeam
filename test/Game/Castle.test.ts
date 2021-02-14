@@ -18,8 +18,10 @@ describe("Tests for Castle (Roszada)", () => {
     board.addPiece(king);
     board.addPiece(rook);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+    const kingMove = new Move(new Square(7, 4), new Square(7, 2), king, null);
+    game.addMove(kingMove);
     //when
-    const castleMove = game.isCastlePossible();
+    const castleMove = game.isCastlePossible(kingMove);
     //then
     expect(castleMove).toBe(true);
   });
@@ -33,8 +35,10 @@ describe("Tests for Castle (Roszada)", () => {
     board.addPiece(king);
     board.addPiece(rook);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+    const kingMove = new Move(new Square(7, 4), new Square(7, 6), king, null);
+    game.addMove(kingMove);
     //when
-    const castleMove = game.isCastlePossible();
+    const castleMove = game.isCastlePossible(kingMove);
     //then
     expect(castleMove).toBe(true);
   });
@@ -48,8 +52,10 @@ describe("Tests for Castle (Roszada)", () => {
     board.addPiece(king);
     board.addPiece(rook);
     const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
+    const kingMove = new Move(new Square(0, 4), new Square(0, 2), king, null);
+    game.addMove(kingMove);
     //when
-    const castleMove = game.isCastlePossible();
+    const castleMove = game.isCastlePossible(kingMove);
     //then
     expect(castleMove).toBe(true);
   });
@@ -63,12 +69,14 @@ describe("Tests for Castle (Roszada)", () => {
     board.addPiece(king);
     board.addPiece(rook);
     const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
+    const kingMove = new Move(new Square(0, 4), new Square(0, 6), king, null);
+    game.addMove(kingMove);
     //when
-    const castleMove = game.isCastlePossible();
+    const castleMove = game.isCastlePossible(kingMove);
     //then
     expect(castleMove).toBe(true);
   });
-  
+
   //TEST 2-1//
 
   test("Castle Move is impossible", () => {
@@ -78,9 +86,10 @@ describe("Tests for Castle (Roszada)", () => {
     board.addPiece(king);
     board.addPiece(rook);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-    new Move(new Square(7, 4), new Square(7, 3), king, null);
+    const kingMove = new Move(new Square(7, 4), new Square(7, 3), king, null);
+    game.addMove(kingMove);
     //when
-    const castleMove = game.isCastlePossible();
+    const castleMove = game.isCastlePossible(kingMove);
     //then
     expect(castleMove).toBe(false);
   });
@@ -94,9 +103,10 @@ describe("Tests for Castle (Roszada)", () => {
     board.addPiece(king);
     board.addPiece(rook);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-    new Move(new Square(7, 4), new Square(6, 3), king, null);
+    const kingMove = new Move(new Square(7, 4), new Square(6, 3), king, null);
+    game.addMove(kingMove);
     //when
-    const castleMove = game.isCastlePossible();
+    const castleMove = game.isCastlePossible(kingMove);
     //then
     expect(castleMove).toBe(false);
   });
@@ -110,9 +120,10 @@ describe("Tests for Castle (Roszada)", () => {
     board.addPiece(king);
     board.addPiece(rook);
     const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
-    new Move(new Square(0, 0), new Square(2, 0), rook, null);
+    const rookMove = new Move(new Square(0, 0), new Square(2, 0), rook, null);
+    game.addMove(rookMove);
     //when
-    const castleMove = game.isCastlePossible();
+    const castleMove = game.isCastlePossible(rookMove);
     //then
     expect(castleMove).toBe(false);
   });
@@ -126,9 +137,10 @@ describe("Tests for Castle (Roszada)", () => {
     board.addPiece(king);
     board.addPiece(rook);
     const game = new Game(undefined, PieceColor.Black, undefined, undefined, undefined, board);
-    new Move(new Square(0, 7), new Square(2, 7), rook, null);
+    const rookMove = new Move(new Square(0, 7), new Square(2, 7), rook, null);
+    game.addMove(rookMove);
     //when
-    const castleMove = game.isCastlePossible();
+    const castleMove = game.isCastlePossible(rookMove);
     //then
     expect(castleMove).toBe(false);
   });

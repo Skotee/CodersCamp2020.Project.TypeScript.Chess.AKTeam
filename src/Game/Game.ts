@@ -129,13 +129,13 @@ export class Game {
 
     if (pieceType == PieceType.King) { //czy to na pewno król
       for (let i = 0; i < playedMoves.length; i++) { //czy król, którym próbujemy zrobić roszadę się ruszył
-        if (playedMoves[i].piece.pieceType == PieceType.King && playedMoves[i].piece.pieceColor == pieceColor) {
+        if (playedMoves[i].piece.pieceType == PieceType.King && playedMoves[i].piece.pieceColor == pieceColor || this.isChecked()) {
           return false;
         }
 
         //którą roszadę chcemy wykonać(długą czy krótką) i dla jakiego koloru
         if (start == new Square(7, 4) && end == new Square(7, 2)) {//długa roszada dla białych = czy 7,1 7,2 i 7,3 jest puste, a 7,2 i 7,3 wolne od szacha
-          if (isRookMoved(new Square(7, 0), PieceColor.White) == true) {  //czy wieża z którą chcemy zrobić roszadę się ruszyła
+          if (isRookCaptured(PieceColor.White, new Square(7, 0)) && isRookMoved(new Square(7, 0), PieceColor.White) == true) {  //czy wieża z którą chcemy zrobić roszadę nie została zbita i czy się nie ruszyła
             return false;
           } else if (isSquaresEmpty([new Square(7, 1), new Square(7, 2), new Square(7, 3)]) // jeżeli wieża z którą chcemy zrobić roszadę się nie ruszyła, to sprawdzamy, czy pola pomiędzy królem a tą wieżą są puste i czy nie są atakowane
             && this.isSquareAttacked(new Square(7, 2)) == false
@@ -143,15 +143,14 @@ export class Game {
             return true;
           }
         } else if (start == new Square(7, 4) && end == new Square(7, 6)) {//krótka roszada dla białych = czy 7,5 i 7,6 jest puste i wolne od szacha
-          if (isRookMoved(new Square(7, 7), PieceColor.White) == true) { //czy wieża z którą chcemy zrobić roszadę się ruszyła
-            return false;
+          if (isRookCaptured(PieceColor.White, new Square(7, 7)) && isRookMoved(new Square(7, 7), PieceColor.White) == true) { //czy wieża z którą chcemy zrobić roszadę nie została zbita i czy się nie ruszyła
           } else if (isSquaresEmpty([new Square(7, 5), new Square(7, 6)])
             && this.isSquareAttacked(new Square(7, 5)) == false
             && this.isSquareAttacked(new Square(7, 6)) == false) {
             return true;
           }
         } else if (start == new Square(0, 4) && end == new Square(0, 2)) {//długa roszada dla czarnych = czy 0,1 0,2 i 0,3 jest puste i czy 0,2 i 0,3 jest wolne od szacha
-          if (isRookMoved(new Square(0, 0), PieceColor.Black) == true) { //czy wieża z którą chcemy zrobić roszadę się ruszyła
+          if (isRookCaptured(PieceColor.Black, new Square(0, 0)) && isRookMoved(new Square(0, 0), PieceColor.Black) == true) { //czy wieża z którą chcemy zrobić roszadę nie została zbita i czy się nie ruszyła
             return false;
           } else if (isSquaresEmpty([new Square(0, 1), new Square(0, 2), new Square(0, 3)])
             && this.isSquareAttacked(new Square(0, 2)) == false
@@ -159,7 +158,7 @@ export class Game {
             return true;
           }
         } else if (start == new Square(0, 4) && end == new Square(0, 6)) {//krótka roszada dla czarnych = czy 0, 5 i 0, 6 jest puste i wolne od szacha
-          if (isRookMoved(new Square(0, 7), PieceColor.Black) == true) { //czy wieża z którą chcemy zrobić roszadę się ruszyła
+          if (isRookCaptured(PieceColor.Black, new Square(0, 7)) && isRookMoved(new Square(0, 7), PieceColor.Black) == true) { //czy wieża z którą chcemy zrobić roszadę nie została zbita i czy się nie ruszyła
             return false;
           } else if (isSquaresEmpty([new Square(0, 5), new Square(0, 6)])
             && this.isSquareAttacked(new Square(0, 5)) == false
@@ -173,6 +172,15 @@ export class Game {
       function isRookMoved(square: Square, rookPieceColor: PieceColor): boolean { //funkcja pomocnicza
         for (let i = 0; i < playedMoves.length; i++) {
           if (playedMoves[i].piece.pieceType == PieceType.Rook && playedMoves[i].piece.pieceColor == rookPieceColor && playedMoves[i].startSquare == square) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function isRookCaptured(color: PieceColor, startSquare: Square) {   //funkcja pomocnicza
+        for (let i = 0; i < playedMoves.length; i++) {
+          if (playedMoves[i].piece.pieceType == PieceType.Rook && playedMoves[i].piece.pieceColor == color && playedMoves[i].startSquare == startSquare) {
             return true;
           }
         }

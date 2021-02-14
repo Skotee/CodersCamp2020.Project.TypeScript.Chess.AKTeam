@@ -1,8 +1,5 @@
-import { Bishop } from "../../src/Board/Bishop";
 import { Board } from "../../src/Board/Board";
 import { King } from "../../src/Board/King";
-import { Knight } from "../../src/Board/Knight";
-import { Pawn } from "../../src/Board/Pawn";
 import { PieceColor } from "../../src/Board/PieceColorEnum";
 import { PieceType } from "../../src/Board/PieceTypeEnum";
 import { Rook } from "../../src/Board/Rook";
@@ -25,7 +22,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
     board.addPiece(kingBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    new Move(new Square(2,1), new Square(2,0), rookWhite, null);
+    new Move(new Square(2, 1), new Square(2, 0), rookWhite, null);
     // then
     const gameResult = game.isCheckmated();
     expect(gameResult).toBe(true);
@@ -44,7 +41,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
     board.addPiece(kingBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(2,1), new Square(0,1), rookWhite, null);
+    const checkMateMove = new Move(new Square(2, 1), new Square(0, 1), rookWhite, null);
     // then
     const gameResult = game.isCheckmated();
     expect(gameResult).toBe(true);
@@ -63,7 +60,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
     board.addPiece(kingBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(1,1), new Square(1,0), rookWhite, null);
+    const checkMateMove = new Move(new Square(1, 1), new Square(1, 0), rookWhite, null);
     // then
     const checkMateResult = game.isCheckmated();
     const checkResult = game.isChecked();
@@ -86,7 +83,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
     board.addPiece(kingWhite);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(2,2), new Square(2,0), rookWhite2, null);
+    const checkMateMove = new Move(new Square(2, 2), new Square(2, 0), rookWhite2, null);
     // then
     const gameResult = game.isCheckmated();
     expect(gameResult).toBe(true);
@@ -106,7 +103,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
     board.addPiece(kingWhite);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(3,2), new Square(3,0), rookWhite2, null);
+    const checkMateMove = new Move(new Square(3, 2), new Square(3, 0), rookWhite2, null);
     // then
     const gameResult = game.isCheckmated();
     expect(gameResult).toBe(true);
@@ -124,7 +121,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
     board.addPiece(kingBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(2,1), new Square(2,0), rookWhite, null);
+    const checkMateMove = new Move(new Square(2, 1), new Square(2, 0), rookWhite, null);
     // then
     const checkMateResult = game.isCheckmated();
     const checkResult = game.isChecked();
@@ -144,7 +141,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
     board.addPiece(kingBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(2,1), new Square(2,7), rookWhite, null);
+    const checkMateMove = new Move(new Square(2, 1), new Square(2, 7), rookWhite, null);
     // then
     const checkMateResult = game.isCheckmated();
     const checkResult = game.isChecked();
@@ -168,7 +165,7 @@ describe("TESTS FOR CHECKEDMATE", () => {
     board.addPiece(kingBlack);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
     // when
-    const checkMateMove = new Move(new Square(6,1), new Square(6,0), rookWhite1, null);
+    const checkMateMove = new Move(new Square(6, 1), new Square(6, 0), rookWhite1, null);
     // then
     const checkMateResult = game.isCheckmated();
     const checkResult = game.isChecked();
