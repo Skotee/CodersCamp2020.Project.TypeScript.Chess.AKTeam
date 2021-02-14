@@ -1,4 +1,8 @@
-// import { newGame } from "../Game/Game";
+import { newGame } from "./app";
+import { Square } from "./Board/Square";
+import { PieceColor } from "./Board/PieceColorEnum";
+import { PieceType } from "./Board/PieceTypeEnum";
+import { King } from "./Board/King";
 
 // console.log('działa game.js');
 
@@ -40,25 +44,29 @@
 
 
 
-// ////////////////////////////////////////////////////////////////////////
-// function addHighlight() {
-//   const squares = newGame.getAvailebleSquares();
-//   for (let i = 0; i < squares.length; i++) {
-//     const square = mapSquareToNumber(squares[i])
-//     var element = document.getElementById(square);
-//     element.classList.add("highlight");
-//   }
-// }
+////////////////////////////////////////////////////////////////////////
+function addHighlight() {
+  const squares = newGame.getAvailableSquares(new King(PieceColor.White, PieceType.King, new Square(5, 2)));
+  for (let i = 0; i < squares.length; i++) {
+    const square = "" + mapSquareToNumber(squares[i])
+    var element = document.getElementById(square);
+    if(element) {
+      element.classList.add("highlight");
+    }
+    
+  console.log("tralala");
+  }
+}
 
-// function mapSquareToNumber(square) {
-//   const row = square.row;
-//   const column = square.column;
-//   const number = "" + row + "" + column;
-//   return +number;
-// }
+function mapSquareToNumber(square: Square): number {
+  const row = square.row;
+  const column = square.column;
+  const number = "" + row + "" + column;
+  return +number;
+}
 
-// const fields = document.querySelectorAll(".field-container");
-// console.log(fields);
-// for(let i = 0; i < fields.length; i++) {
-//   fields[i].addEventListener("click", addHighlight);
-// }
+const fields = document.querySelectorAll(".field-container");
+console.log(fields);
+for (let i = 0; i < fields.length; i++) {
+  fields[i].addEventListener("click", addHighlight);
+}

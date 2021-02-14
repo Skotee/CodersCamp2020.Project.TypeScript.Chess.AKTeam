@@ -1,5 +1,6 @@
 import { Square } from "../Board/Square";
 import { Piece } from "../Board/Piece";
+import { PieceColor } from "../Board/PieceColorEnum";
 
 export class Move {
     private _startSquare: Square;
@@ -46,6 +47,40 @@ export class Move {
         this._capturePiece = capturePiece;
     }
 
-    isPawnPromotion():boolean{return true};
-    is2FieldPawnMove():boolean{return true};
+    isPawnPromotion(endSquare: Square, piece: Piece):boolean{
+        if(piece.pieceColor === PieceColor.White && endSquare.row === 0){
+            for (let col = 0; col < 8; col++) {
+                if (endSquare.column == col) {
+                    return true
+                } 
+            }
+        }
+        if(piece.pieceColor === PieceColor.Black && endSquare.row === 7){
+            for (let col = 0; col < 8; col++) {
+                if (endSquare.column == col) {
+                    return true
+                } 
+            }
+        }
+        return false;
+        
+    };
+    is2FieldPawnMove(startSquare: Square, piece:Piece):boolean{
+        if(piece.pieceColor === PieceColor.White && startSquare.row === 6){
+            for (let col = 0; col < 8; col++) {
+                if (startSquare.column == col) {
+                    return true
+                } 
+            }
+        }
+        if(piece.pieceColor === PieceColor.Black && startSquare.row === 1){
+            for (let col = 0; col < 8; col++) {
+                if (startSquare.column == col) {
+                    return true
+                } 
+            }
+        }
+        return false;
+        
+    };
 }

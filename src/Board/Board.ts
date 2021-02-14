@@ -57,7 +57,7 @@ export class Board {
   }
 
   public getPieceSet(pieceColor: PieceColor): Piece[] {
-    return [];
+    return (pieceColor==PieceColor.White) ? this._piecesOnBoard[0] : this._piecesOnBoard[1];
   }
   public create(): void {
     //black pawns

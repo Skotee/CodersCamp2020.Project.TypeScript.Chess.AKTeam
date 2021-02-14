@@ -94,11 +94,48 @@ export class Game {
     }
   }
 
-  isChecked(): boolean {
-    return true;
+  isChecked(color?: PieceColor): boolean {
+    let squaresAttacked = this.checkAllSquaresAttacked(color);
+    let piecesArray = this._board.getPieceSet((color == undefined)? this._turn : color );
+    piecesArray.forEach((e) => {
+      if(e.pieceType == PieceType.King){
+        squaresAttacked.includes(e.placeAt)
+        return true
+      }
+    })
+    return false
+    
+    // wywołanie checkAllSquaresAttacked
+    // isSquareAttacked bedzie sprawdzać czy to pole siedzi w liscie atakowanych pól
   }
   isCheckmated(): boolean {
-    return true;
+//     Co musi się wydarzyć, aby był mat:
+
+// 1. Musi być szach (atak na króla)
+// 2. Król nie może uciec przed szachem
+// 3. Żadna figura i pionek nie może zbić atakującej bierki
+// 4. Nie da się zasłonić króla przed szachem
+
+// patrze se wszystkie mozliwe przyszle ruchu, nastepnie patrze czy bedzie dalej szach, jesli isChecked dalej jest tru to wtedy jest mat
+    let pieces = this.board.getPieceSet(this._turn);
+    let bool: boolean = false;
+    pieces.forEach((piece) =>{
+      let squaresArray: Square[] = this.getAvailableSquares(piece);
+      squaresArray.forEach((sqr) => {
+        // ogolnie nw jak sprawdzic aby gra sprawdzala jeden ruch przed
+        this.addMove(new Move(piece.placeAt, sqr, piece, null));
+        // wiec tutaj powinien byc jakis warunek
+        if (this.isChecked(piece.pieceColor)) {
+          bool = true;
+        }
+        
+
+      })
+    })
+
+
+    return false;
+    
   }
   isStalemated(): boolean {
     return true;
@@ -115,8 +152,12 @@ export class Game {
     return availableSquares;
   }
 
-  isSquareAttacked(square: Square): boolean {
-    return true;
+  isSquareAttacked(square: Square, color?: PieceColor): boolean {
+    let squaresAttacked = this.checkAllSquaresAttacked()
+    if (squaresAttacked.includes(square)) {
+      return true;
+    }
+    return false;
   }
 
   isCastlePossible(move: Move): boolean { //czy roszada jest możliwa
@@ -282,4 +323,16 @@ export class Game {
     }
     //sprawdza czy nowy ruch - endSquare:Square z klasy Move, znajduje sie w tablicy, którą zwraca getAvailableSquares(square: Square): Square[]
   }
+
+  checkAllSquaresAttacked(color?: PieceColor): Square[] {
+    let squaresAttacked: Square[] = [];
+    let piecesArray = this._board.getPieceSet((color == undefined)? this._turn : color );
+    piecesArray.forEach((e) => {
+      squaresAttacked.concat(this.getAvailableSquares(e))
+    })
+
+
+    return squaresAttacked;
+  }
+  
 }
