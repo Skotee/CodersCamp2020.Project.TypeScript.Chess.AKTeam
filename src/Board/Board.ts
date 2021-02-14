@@ -11,10 +11,10 @@ import { Bishop } from "./Bishop";
 
 export class Board {
   private _piecesOnBoard: Piece[][];
-  private _squares: (Piece | undefined)[][];
+  private _squares: (Piece | null)[][];
 
   constructor(
-    squares: Piece[][] = [],
+    squares:(Piece | null)[][] = [],
     pieces: Piece[][] = [[], []],
   ) {
     this._squares = squares;
@@ -23,15 +23,15 @@ export class Board {
     for (var i: number = 0; i < 8; i++) {
       this._squares[i] = [];
       for (var j: number = 0; j < 8; j++) {
-        this._squares[i][j] = undefined;
+        this._squares[i][j] = null;
       }
     }
   }
-  public get squares(): (Piece | undefined)[][] {
+  public get squares(): (Piece | null)[][] {
     return this._squares;
   }
 
-  public set squares(squares: (Piece | undefined)[][]) {
+  public set squares(squares: (Piece | null)[][]) {
     this._squares = squares;
   }
 
@@ -87,7 +87,7 @@ export class Board {
     this.addPiece(new King(PieceColor.White, PieceType.King, new Square(7, 4)))
   }
   public isSquareFree(square: Square): boolean {
-    return (this._squares[square.row][square.column] == undefined);
+    return (this._squares[square.row][square.column] == null);
   }
   public isOppositeColor(square: Square, color: PieceColor): boolean {
 
