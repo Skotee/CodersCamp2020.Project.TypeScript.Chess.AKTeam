@@ -4,17 +4,11 @@ import { PieceColor } from "./Board/PieceColorEnum";
 import { PieceType } from "./Board/PieceTypeEnum";
 import { King } from "./Board/King";
 
-// console.log('działa game.js');
-
 // function addRook(squareNumber, piece) { //przykład
 //   var element = document.getElementById(squareNumber);
 //   element.classList.add(piece);
 // }
 
-// function addHighlight(squareNumber) {
-//   var element = document.getElementById(squareNumber); //trzebaby zmapować naszego square'a do postaci 25 na przykład
-//   element.classList.add("highlight");
-// }
 
 // function removeHighlight(squareNumber) {
 //   var element = document.getElementById(squareNumber); //trzebaby zmapować naszego square'a do postaci 25 na przykład
@@ -43,8 +37,6 @@ import { King } from "./Board/King";
 // }
 
 
-
-////////////////////////////////////////////////////////////////////////
 function addHighlight() {
   const squares = newGame.getAvailableSquares(new King(PieceColor.White, PieceType.King, new Square(5, 2)));
   for (let i = 0; i < squares.length; i++) {
@@ -57,6 +49,8 @@ function addHighlight() {
   console.log("tralala");
   }
 }
+
+
 
 function mapSquareToNumber(square: Square): number {
   const row = square.row;
