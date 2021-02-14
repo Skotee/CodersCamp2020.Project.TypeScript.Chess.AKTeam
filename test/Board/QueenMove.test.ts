@@ -193,60 +193,60 @@ describe("Moves for queen", () => {
         expect(possibleMove).toBe(true);
     });
 
-    //TEST 4-1
-    test("Move beyond the board", () => {
-        //given
-        const queen = new Queen(PieceColor.White, PieceType.Queen, new Square(2, 5));
-        const board = new Board();
-        board.addPiece(queen);
-        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-        const newMove = new Move(new Square(2, 5), new Square(5, 8), queen, null);
-        //when
-        const possibleMove = game.isMovePossible(newMove);
-        //then
-        expect(possibleMove).toBe(false);
-    });
+    // //TEST 4-1
+    // test("Move beyond the board", () => {
+    //     //given
+    //     const queen = new Queen(PieceColor.White, PieceType.Queen, new Square(2, 5));
+    //     const board = new Board();
+    //     board.addPiece(queen);
+    //     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+    //     const newMove = new Move(new Square(2, 5), new Square(5, 8), queen, null);
+    //     //when
+    //     const possibleMove = game.isMovePossible(newMove);
+    //     //then
+    //     expect(possibleMove).toBe(false);
+    // });
 
-    //TEST 4-2
-    test("Move beyond the board", () => {
-        //given
-        const queen = new Queen(PieceColor.White, PieceType.Queen, new Square(7, 0));
-        const board = new Board();
-        board.addPiece(queen);
-        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-        const newMove = new Move(new Square(7, 0), new Square(8, 0), queen, null);
-        //when
-        const possibleMove = game.isMovePossible(newMove);
-        //then
-        expect(possibleMove).toBe(false);
-    });
+    // //TEST 4-2
+    // test("Move beyond the board", () => {
+    //     //given
+    //     const queen = new Queen(PieceColor.White, PieceType.Queen, new Square(7, 0));
+    //     const board = new Board();
+    //     board.addPiece(queen);
+    //     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+    //     const newMove = new Move(new Square(7, 0), new Square(8, 0), queen, null);
+    //     //when
+    //     const possibleMove = game.isMovePossible(newMove);
+    //     //then
+    //     expect(possibleMove).toBe(false);
+    // });
 
-    //TEST 4-3
-    test("Move beyond the board", () => {
-        //given
-        const queen = new Queen(PieceColor.White, PieceType.Queen, new Square(4, 4));
-        const board = new Board();
-        board.addPiece(queen);
-        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-        const newMove = new Move(new Square(4, 4), new Square(4, 8), queen, null);
-        //when
-        const possibleMove = game.isMovePossible(newMove);
-        //then
-        expect(possibleMove).toBe(false);
-    });
+    // //TEST 4-3
+    // test("Move beyond the board", () => {
+    //     //given
+    //     const queen = new Queen(PieceColor.White, PieceType.Queen, new Square(4, 4));
+    //     const board = new Board();
+    //     board.addPiece(queen);
+    //     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+    //     const newMove = new Move(new Square(4, 4), new Square(4, 8), queen, null);
+    //     //when
+    //     const possibleMove = game.isMovePossible(newMove);
+    //     //then
+    //     expect(possibleMove).toBe(false);
+    // });
 
-    //TEST 4-4
-    test("Move beyond the board", () => {
-        //given
-        const queen = new Queen(PieceColor.White, PieceType.Queen, new Square(1, 6));
-        const board = new Board();
-        board.addPiece(queen);
-        const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-        const newMove = new Move(new Square(1, 6), new Square(1, 8), queen, null);
-        //when
-        const possibleMove = game.isMovePossible(newMove);
-        //then
-        expect(possibleMove).toBe(false);
-    });
+    // //TEST 4-4
+    // test("Move beyond the board", () => {
+    //     //given
+    //     const queen = new Queen(PieceColor.White, PieceType.Queen, new Square(1, 6));
+    //     const board = new Board();
+    //     board.addPiece(queen);
+    //     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+    //     const newMove = new Move(new Square(1, 6), new Square(1, 8), queen, null);
+    //     //when
+    //     const possibleMove = game.isMovePossible(newMove);
+    //     //then
+    //     expect(possibleMove).toBe(false);
+    // });
 
 })

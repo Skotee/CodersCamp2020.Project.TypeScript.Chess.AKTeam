@@ -239,9 +239,9 @@ export class Game {
 
     for (let i = 1; i++; i < moveRange)
       if (this.board.isSquareFree(new Square(move.startSquare.row + i * directionX, move.startSquare.column + i * directionY))) {
-        return false
+        return true
       }//pole jest zajęte 
-    return true
+    return false
   }
   isMovePossiblePawn(move: Move): boolean {
     return this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor);
@@ -263,9 +263,14 @@ export class Game {
       case PieceType.Pawn:
         return this.isMovePossiblePawn(move);
 
-      case PieceType.Rook || PieceType.Bishop || PieceType.Queen:
+      case PieceType.Bishop:
         return this.isMovePossibleRookBishopQueen(move);
 
+      case PieceType.Queen:
+        return this.isMovePossibleRookBishopQueen(move);
+
+      case PieceType.Rook:
+        return this.isMovePossibleRookBishopQueen(move);
       case PieceType.Knight:
         return this.isMovePossibleKnight(move);
 

@@ -192,59 +192,59 @@ describe("Moves for rook", () => {
     expect(possibleMove).toBe(true);
   });
 
-  //TEST 4-1
-  test("Move beyond the board", () => {
-    //given
-    const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(7, 0));
-    const board = new Board();
-    board.addPiece(rook);
-    const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-    const newMove = new Move(new Square(7, 0), new Square(8, 0), rook, null);
-    //when
-    const possibleMove = game.isMovePossible(newMove);
-    //then
-    expect(possibleMove).toBe(false);
-  });
+  // //TEST 4-1
+  // test("Move beyond the board", () => {
+  //   //given
+  //   const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(7, 0));
+  //   const board = new Board();
+  //   board.addPiece(rook);
+  //   const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+  //   const newMove = new Move(new Square(7, 0), new Square(8, 0), rook, null);
+  //   //when
+  //   const possibleMove = game.isMovePossible(newMove);
+  //   //then
+  //   expect(possibleMove).toBe(false);
+  // });
 
-  //TEST 4-2
-  test("Move beyond the board", () => {
-    //given
-    const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(7, 0));
-    const board = new Board();
-    board.addPiece(rook);
-    const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-    const newMove = new Move(new Square(7, 0), new Square(7, 8), rook, null);
-    //when
-    const possibleMove = game.isMovePossible(newMove);
-    //then
-    expect(possibleMove).toBe(false);
-  });
+  // //TEST 4-2
+  // test("Move beyond the board", () => {
+  //   //given
+  //   const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(7, 0));
+  //   const board = new Board();
+  //   board.addPiece(rook);
+  //   const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+  //   const newMove = new Move(new Square(7, 0), new Square(7, 8), rook, null);
+  //   //when
+  //   const possibleMove = game.isMovePossible(newMove);
+  //   //then
+  //   expect(possibleMove).toBe(false);
+  // });
 
-  //TEST 4-3
-  test("Move beyond the board", () => {
-    //given
-    const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(3, 5));
-    const board = new Board();
-    board.addPiece(rook);
-    const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-    const newMove = new Move(new Square(3, 5), new Square(3, 8), rook, null);
-    //when
-    const possibleMove = game.isMovePossible(newMove);
-    //then
-    expect(possibleMove).toBe(false);
-  });
+  // //TEST 4-3
+  // test("Move beyond the board", () => {
+  //   //given
+  //   const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(3, 5));
+  //   const board = new Board();
+  //   board.addPiece(rook);
+  //   const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+  //   const newMove = new Move(new Square(3, 5), new Square(3, 8), rook, null);
+  //   //when
+  //   const possibleMove = game.isMovePossible(newMove);
+  //   //then
+  //   expect(possibleMove).toBe(false);
+  // });
 
-  //TEST 4-4
-  test("Move beyond the board", () => {
-    //given
-    const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(1, 1));
-    const board = new Board();
-    board.addPiece(rook);
-    const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-    const newMove = new Move(new Square(1, 1), new Square(8, 1), rook, null);
-    //when
-    const possibleMove = game.isMovePossible(newMove);
-    //then
-    expect(possibleMove).toBe(false);
-  });
+  // //TEST 4-4
+  // test("Move beyond the board", () => {
+  //   //given
+  //   const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(1, 1));
+  //   const board = new Board();
+  //   board.addPiece(rook);
+  //   const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+  //   const newMove = new Move(new Square(1, 1), new Square(8, 1), rook, null);
+  //   //when
+  //   const possibleMove = game.isMovePossible(newMove);
+  //   //then
+  //   expect(possibleMove).toBe(false);
+  // });
 })
