@@ -96,30 +96,30 @@ export class Game {
 
   isChecked(color?: PieceColor): boolean {
     let squaresAttacked = this.checkAllSquaresAttacked(color);
-    let piecesArray = this._board.getPieceSet((color == undefined)? this._turn : color );
+    let piecesArray = this._board.getPieceSet((color == undefined) ? this._turn : color);
     piecesArray.forEach((e) => {
-      if(e.pieceType == PieceType.King){
+      if (e.pieceType == PieceType.King) {
         squaresAttacked.includes(e.placeAt)
         return true
       }
     })
     return false
-    
+
     // wywołanie checkAllSquaresAttacked
     // isSquareAttacked bedzie sprawdzać czy to pole siedzi w liscie atakowanych pól
   }
   isCheckmated(): boolean {
-//     Co musi się wydarzyć, aby był mat:
+    //     Co musi się wydarzyć, aby był mat:
 
-// 1. Musi być szach (atak na króla)
-// 2. Król nie może uciec przed szachem
-// 3. Żadna figura i pionek nie może zbić atakującej bierki
-// 4. Nie da się zasłonić króla przed szachem
+    // 1. Musi być szach (atak na króla)
+    // 2. Król nie może uciec przed szachem
+    // 3. Żadna figura i pionek nie może zbić atakującej bierki
+    // 4. Nie da się zasłonić króla przed szachem
 
-// patrze se wszystkie mozliwe przyszle ruchu, nastepnie patrze czy bedzie dalej szach, jesli isChecked dalej jest tru to wtedy jest mat
+    // patrze se wszystkie mozliwe przyszle ruchu, nastepnie patrze czy bedzie dalej szach, jesli isChecked dalej jest tru to wtedy jest mat
     let pieces = this.board.getPieceSet(this._turn);
     let bool: boolean = false;
-    pieces.forEach((piece) =>{
+    pieces.forEach((piece) => {
       let squaresArray: Square[] = this.getAvailableSquares(piece);
       squaresArray.forEach((sqr) => {
         // ogolnie nw jak sprawdzic aby gra sprawdzala jeden ruch przed
@@ -128,14 +128,14 @@ export class Game {
         if (this.isChecked(piece.pieceColor)) {
           bool = true;
         }
-        
+
 
       })
     })
 
 
     return false;
-    
+
   }
   isStalemated(): boolean {
     return true;
@@ -326,7 +326,7 @@ export class Game {
 
   checkAllSquaresAttacked(color?: PieceColor): Square[] {
     let squaresAttacked: Square[] = [];
-    let piecesArray = this._board.getPieceSet((color == undefined)? this._turn : color );
+    let piecesArray = this._board.getPieceSet((color == undefined) ? this._turn : color);
     piecesArray.forEach((e) => {
       squaresAttacked.concat(this.getAvailableSquares(e))
     })
@@ -334,5 +334,5 @@ export class Game {
 
     return squaresAttacked;
   }
-  
+
 }

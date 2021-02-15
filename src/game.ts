@@ -3,6 +3,8 @@ import { Square } from "./Board/Square";
 import { PieceColor } from "./Board/PieceColorEnum";
 import { PieceType } from "./Board/PieceTypeEnum";
 import { King } from "./Board/King";
+import { Pawn } from "./Board/Pawn";
+
 
 // function addRook(squareNumber, piece) { //przykład
 //   var element = document.getElementById(squareNumber);
@@ -36,31 +38,67 @@ import { King } from "./Board/King";
 //   piece.classList.remove(knight - black);
 // }
 
+// const squares = [new Square(0, 3), new Square(3, 4)];
 
-function addHighlight() {
-  const squares = newGame.getAvailableSquares(new King(PieceColor.White, PieceType.King, new Square(5, 2)));
-  for (let i = 0; i < squares.length; i++) {
-    const square = "" + mapSquareToNumber(squares[i])
-    var element = document.getElementById(square);
-    if(element) {
-      element.classList.add("highlight");
-    }
-    
-  console.log("tralala");
+function addHighlight(e: any): void {
+  const element = e.target;
+
+  const className = e.target.getAttribute("class");
+  const whitchSquare = e.target.getAttribute("id");
+  const newSquare = mapIdToSquare(whitchSquare);
+
+  if (className.includes("pawn-black")) {
+    console.log("turururu");
+    // const squares = newGame.getAvailableSquares(new Pawn(PieceColor.Black, PieceType.Pawn, newSquare));
+    // for (let i = 0; i < squares.length; i++) {
+    //   const square = mapSquareToNumber(squares[i]);
+    //   var element = document.getElementById(square);
+    //   if (element) {
+    //     element.classList.add("highlight");
+    //   }
+    // }
+
+  } else if (className.includes(".rook-black")) {
+
+  } else if (className.includes(".knight-black")) {
+
+  } else if (className.includes(".bishop-black")) {
+
+  } else if (className.includes(".queen-black")) {
+
+  } else if (className.includes(".king-black")) {
+
+  } else if (className.includes(".pawn-white")) {
+
+  } else if (className.includes(".rook-white")) {
+
+  } else if (className.includes(".knight-white")) {
+
+  } else if (className.includes(".bishop-white")) {
+
+  } else if (className.includes(".queen-white")) {
+
+  } else if (className.includes(".king-whitek")) {
+
   }
 }
 
 
 
-function mapSquareToNumber(square: Square): number {
+function mapSquareToNumber(square: Square): string {
   const row = square.row;
   const column = square.column;
   const number = "" + row + "" + column;
-  return +number;
+  return number;
 }
 
-const fields = document.querySelectorAll(".field-container");
-console.log(fields);
+function mapIdToSquare(id: String): Square {
+  const row = +(id[0]);
+  const column = +(id[1]);
+  return new Square(row, column);
+}
+
+const fields = document.querySelectorAll(".field");
 for (let i = 0; i < fields.length; i++) {
   fields[i].addEventListener("click", addHighlight);
 }
