@@ -94,20 +94,34 @@ export class Game {
     }
   }
 
-  isChecked(board: Board, color?: PieceColor): boolean {
-    let squaresAttacked = this.checkAllSquaresAttacked(color);
-    let piecesArray = board.getPieceSet(this._turn);
-    piecesArray.forEach((e) => {
-      if (e.pieceType == PieceType.King) {
-        squaresAttacked.includes(e.placeAt)
-        return true
+  isChecked(tempBoard?: Board, color?: PieceColor): boolean {
+    let squaresAttacked = this.checkAllSquaresAttacked(this.opposedColor(), tempBoard) ;
+    let piecesArray: Piece[];
+    if (tempBoard == undefined) {
+      piecesArray = this._board.getPieceSet(this._turn);
+    } else {
+      piecesArray = tempBoard.getPieceSet(this._turn);
+    }
+    
+    for (let i = 0; i < piecesArray.length; i++) {
+      if (piecesArray[i].pieceType == PieceType.King) {
+        for (let j = 0; j < squaresAttacked.length; j++) {
+          if (squaresAttacked[j].column == piecesArray[i].placeAt.column && squaresAttacked[j].row == piecesArray[i].placeAt.row) {
+            return true
+          }
+        }
       }
-    })
+    }
+
     return false
+
+    
 
     // wywołanie checkAllSquaresAttacked
     // isSquareAttacked bedzie sprawdzać czy to pole siedzi w liscie atakowanych pól
   }
+
+  
   isCheckmated(): boolean {
     //     Co musi się wydarzyć, aby był mat:
 
@@ -117,12 +131,12 @@ export class Game {
     // 4. Nie da się zasłonić króla przed szachem
 
     // patrze se wszystkie mozliwe przyszle ruchu, nastepnie patrze czy bedzie dalej szach, jesli isChecked dalej jest tru to wtedy jest mat
-    let pieces = this.board.getPieceSet(this._turn);
+    let pieces = this._board.getPieceSet(this._turn);
     pieces.forEach((piece) => {
       let squaresArray: Square[] = this.getAvailableSquares(piece);
       squaresArray.forEach((square) => {
         // ogolnie nw jak sprawdzic aby gra sprawdzala jeden ruch przed
-        let tempBoard = Object.create(this._board)
+        let tempBoard: Board = this._board.createCopy();
         tempBoard.updateBoard(new Move(piece.placeAt, square, piece, null));
         // wiec tutaj powinien byc jakis warunek
         if (!this.isChecked(tempBoard, piece.pieceColor)) {
@@ -277,8 +291,7 @@ export class Game {
     for (let i = 1; i < moveRange; i++){
       let CheckX = move.startSquare.row + i * directionX;
       let CheckY = move.startSquare.column + i * directionY;
-      if (!this.board.isSquareFree(new Square(CheckX, CheckY))) {
-        console.log(move.piece.pieceType + " " + i + " " + moveRange + " " + "\n" + move.piece.placeAt.row + " " + CheckX +  "\n" + move.piece.placeAt.column + " " + CheckY );
+      if (!this._board.isSquareFree(new Square(CheckX, CheckY))) {
         return false;
       }//pole jest zajęte 
     }
@@ -288,16 +301,16 @@ export class Game {
 
   
   isMovePossiblePawn(move: Move): boolean {
-    return !this.isCheckAfterMove(move) && (this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor));
+    return !this.isCheckAfterMove(move) && (this._board.isSquareFree(move.endSquare) || this._board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
   isMovePossibleRookBishopQueen(move: Move): boolean {
-    return !this.isCheckAfterMove(move) && this.isFreeRoute(move) && (this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor));
+    return !this.isCheckAfterMove(move) && this.isFreeRoute(move) && (this._board.isSquareFree(move.endSquare) || this._board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
   isMovePossibleKnight(move: Move): boolean {
-    return !this.isCheckAfterMove(move) && (this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor));
+    return !this.isCheckAfterMove(move) && (this._board.isSquareFree(move.endSquare) || this._board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
   isMovePossibleKing(move: Move): boolean {
-    return !this.isCheckAfterMove(move) && (this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor));
+    return !this.isCheckAfterMove(move) && (this._board.isSquareFree(move.endSquare) || this._board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
 
 
@@ -327,19 +340,45 @@ export class Game {
     //sprawdza czy nowy ruch - endSquare:Square z klasy Move, znajduje sie w tablicy, którą zwraca getAvailableSquares(square: Square): Square[]
   }
 
-  checkAllSquaresAttacked(color?: PieceColor): Square[] {
+  checkAllSquaresAttacked(color?: PieceColor, tempBoard?: Board): Square[] {
     let squaresAttacked: Square[] = [];
-    let piecesArray = this._board.getPieceSet(this._turn);
-    piecesArray.forEach((e) => {
-      squaresAttacked.concat(this.getAvailableSquares(e))
+    let piecesArray: Piece[];
+    if(tempBoard == undefined){
+      piecesArray = this._board.getPieceSet(this.opposedColor());
+    }
+    else{
+      piecesArray = tempBoard.getPieceSet(this.opposedColor());
+    }
+    piecesArray.forEach((piece) => {
+      piece.validMoves().forEach(e => {
+        if (piece.pieceType == PieceType.Bishop || piece.pieceType == PieceType.Queen || piece.pieceType == PieceType.Rook) {
+          if (this.isFreeRoute(new Move(piece.placeAt, e, piece ,null))) {
+            squaresAttacked.push(e)  
+          }
+        }
+        else if (piece.pieceType == PieceType.Pawn) {
+          if (piece.placeAt.column != e.column) {
+            squaresAttacked.push(e)  
+          }
+        }
+        else if (piece.pieceType == PieceType.King) {
+          if (Math.abs(piece.placeAt.column - e.column)<2) {
+            squaresAttacked.push(e)  
+          }
+        }
+        else{
+          squaresAttacked.push(e)  
+        }
+      });
     })
-
-
     return squaresAttacked;
   }
   isCheckAfterMove(move: Move):boolean{
-    let tempBoard = Object.create(this._board)
+    let tempBoard: Board = this._board.createCopy();
     tempBoard.updateBoard(move);
     return this.isChecked(tempBoard, move.piece.pieceColor); 
+  }
+  opposedColor():PieceColor{
+    return this._turn==PieceColor.Black ? PieceColor.White : PieceColor.Black; 
   }
 }

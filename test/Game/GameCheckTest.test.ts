@@ -58,7 +58,7 @@ describe("TESTS FOR CHECK", () => {
   
       const newGame = new Game(
         undefined,
-        undefined,
+        PieceColor.Black,
         undefined,
         undefined,
         undefined,
@@ -102,7 +102,7 @@ describe("TESTS FOR CHECK", () => {
 
     const newGame = new Game(
       undefined,
-      undefined,
+      PieceColor.White,
       undefined,
       undefined,
       undefined,
@@ -110,7 +110,7 @@ describe("TESTS FOR CHECK", () => {
     );
 
     const result = newGame.isChecked();
-    expect(result).toBe(true);
+    expect(result).toBe(false);
   });
 
   //TEST 3//
@@ -182,7 +182,7 @@ describe("TESTS FOR CHECK", () => {
 
     const newGame = new Game(
       undefined,
-      undefined,
+      PieceColor.Black,
       undefined,
       undefined,
       undefined,
@@ -227,7 +227,7 @@ describe("TESTS FOR CHECK", () => {
 
     const newGame = new Game(
       undefined,
-      undefined,
+      PieceColor.Black,
       undefined,
       undefined,
       undefined,
@@ -270,7 +270,7 @@ describe("TESTS FOR CHECK", () => {
 
     const newGame = new Game(
       undefined,
-      undefined,
+      PieceColor.Black,
       undefined,
       undefined,
       undefined,
@@ -330,7 +330,7 @@ describe("TESTS FOR CHECK", () => {
 
     const newGame = new Game(
       undefined,
-      undefined,
+      PieceColor.Black,
       undefined,
       undefined,
       undefined,
@@ -365,7 +365,7 @@ describe("TESTS FOR CHECK", () => {
 
     const newGame = new Game(
       undefined,
-      undefined,
+      PieceColor.Black,
       undefined,
       undefined,
       undefined,

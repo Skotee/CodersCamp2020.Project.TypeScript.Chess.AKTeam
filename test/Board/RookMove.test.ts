@@ -89,7 +89,7 @@ describe("Moves for rook", () => {
   test("White rook can't move on square with white Piece", () => {
     //given
     const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(0, 0));
-    const pawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(6, 0));
+    const pawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(6, 0));
     const board = new Board();
     board.addPiece(rook);
     board.addPiece(pawn);
@@ -103,13 +103,13 @@ describe("Moves for rook", () => {
   //TEST 2-1
   test("Rook cant move trough pawn", () => {
     //given
-    const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(0, 2));
-    const pawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(2, 2));
+    const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 2));
+    const pawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(4, 2));
     const board = new Board();
     board.addPiece(rook);
     board.addPiece(pawn);
     const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-    const newMove = new Move(new Square(0, 2), new Square(4, 2), rook, null);
+    const newMove = new Move(new Square(2, 2), new Square(6, 2), rook, null);
     //when
     const possibleMove = game.isMovePossible(newMove);
     //then
