@@ -245,6 +245,7 @@ describe("Moves for knight", () => {
         //when
         const possibleMove = game.isMovePossible(newMove);
         //then
+        console.log(knight.validMoves());
         expect(possibleMove).toBe(false);
     });
 

@@ -301,15 +301,27 @@ export class Game {
 
   
   isMovePossiblePawn(move: Move): boolean {
+    if ((move.endSquare.row > 7 || move.endSquare.column > 7) || (move.endSquare.row < 0 || move.endSquare.column < 0)) {
+      return false;
+    }
     return !this.isCheckAfterMove(move) && (this._board.isSquareFree(move.endSquare) || this._board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
   isMovePossibleRookBishopQueen(move: Move): boolean {
+    if ((move.endSquare.row > 7 || move.endSquare.column > 7) || (move.endSquare.row < 0 || move.endSquare.column < 0)) {
+      return false;
+    }
     return !this.isCheckAfterMove(move) && this.isFreeRoute(move) && (this._board.isSquareFree(move.endSquare) || this._board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
   isMovePossibleKnight(move: Move): boolean {
+    if ((move.endSquare.row > 7 || move.endSquare.column > 7) || (move.endSquare.row < 0 || move.endSquare.column < 0)) {
+      return false;
+    }
     return !this.isCheckAfterMove(move) && (this._board.isSquareFree(move.endSquare) || this._board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
   isMovePossibleKing(move: Move): boolean {
+    if ((move.endSquare.row > 7 || move.endSquare.column > 7) || (move.endSquare.row < 0 || move.endSquare.column < 0)) {
+      return false;
+    }
     return !this.isCheckAfterMove(move) && (this._board.isSquareFree(move.endSquare) || this._board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
 
