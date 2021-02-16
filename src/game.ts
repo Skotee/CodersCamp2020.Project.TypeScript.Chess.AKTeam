@@ -4,7 +4,10 @@ import { PieceColor } from "./Board/PieceColorEnum";
 import { PieceType } from "./Board/PieceTypeEnum";
 import { King } from "./Board/King";
 import { Pawn } from "./Board/Pawn";
-
+import { Piece } from "./Board/Piece";
+import { Game } from "./Game/Game"
+import { Board } from "./Board/Board";
+// board.updatePosition(move);
 
 // function addRook(squareNumber, piece) { //przykład
 //   var element = document.getElementById(squareNumber);
@@ -40,50 +43,78 @@ import { Pawn } from "./Board/Pawn";
 
 // const squares = [new Square(0, 3), new Square(3, 4)];
 
-function addHighlight(e: any): void {
-  const element = e.target;
+// var elements = document.getElementsByClassName("classname");
 
-  const className = e.target.getAttribute("class");
-  const whitchSquare = e.target.getAttribute("id");
-  const newSquare = mapIdToSquare(whitchSquare);
+// var myFunction = function() {
+//     var attribute = this.getAttribute("data-myattribute");
+//     alert(attribute);
+// };
+// Array.from(elements).forEach(function(element) {
+//   element.addEventListener('click', myFunction);
+// });
 
-  if (className.includes("pawn-black")) {
-    console.log("turururu");
-    // const squares = newGame.getAvailableSquares(new Pawn(PieceColor.Black, PieceType.Pawn, newSquare));
-    // for (let i = 0; i < squares.length; i++) {
-    //   const square = mapSquareToNumber(squares[i]);
-    //   var element = document.getElementById(square);
-    //   if (element) {
-    //     element.classList.add("highlight");
-    //   }
-    // }
+function gameLoop() {
+  let board:Board = new Board()
+  board.create();
+  let game:Game = new Game(undefined,PieceColor.White,undefined,undefined,undefined,board)
+  while (game.isEnded()) { //pętla działa dopóki isEnded nie równa się false
+    
 
-  } else if (className.includes(".rook-black")) {
+    //kliknięcie na kwadrat w szachownicy
 
-  } else if (className.includes(".knight-black")) {
+    if ( czy w tym square stoi pionek aktualnego gracza) //sprawdzenie czy w tym square stoi pionek aktualnego gracza
+    { 
+      //jeśli tak: dalsze działania
 
-  } else if (className.includes(".bishop-black")) {
+      // podświetl kliknięte pole
 
-  } else if (className.includes(".queen-black")) {
 
-  } else if (className.includes(".king-black")) {
+      // podświetl pola na które może stanąć wybrana bierka
 
-  } else if (className.includes(".pawn-white")) {
 
-  } else if (className.includes(".rook-white")) {
+      // kliknięcie na kwadrat w szachownicy
 
-  } else if (className.includes(".knight-white")) {
+      
+      if (czy ten kwadrat należy do pól podświetlonych?) {  // czy ten kwadrat należy do pól podświetlonych? sprawdzenie metody w stylu isAvailableSquare
+        //wywołaj metodę removePiece() ze starego kwadratu oraz wywołaj metodę addPiece() na nowym kwadracie
 
-  } else if (className.includes(".bishop-white")) {
-
-  } else if (className.includes(".queen-white")) {
-
-  } else if (className.includes(".king-whitek")) {
-
+      }
+       if (condition) { //sprawdź warunki końca gry (mat, pat, zasada 50, zadada trzykrotne) // ten if jest niepotrzbemy bo to samo sprawdzamy w warunu pętli while
+       
+         //kesli koniec gry
+       } else {
+         
+      } else {
+        
+      }
+     
+    } else { 
+      //jeśli nie  nic nie rób
+    }
   }
 }
 
 
+function addHighlight(e: any): void {
+  const whichSquare = e.target.getAttribute("id");
+  const newSquare = mapIdToSquare(whichSquare);
+  const board = newGame.board;
+  const piece = board[newSquare.row][newSquare.column];
+  if (piece) {
+    highlightSquaresForPiece(piece);
+  }
+}
+
+function highlightSquaresForPiece(piece: Piece) {
+  const squares = newGame.getAvailableSquares(piece);
+  for (let i = 0; i < squares.length; i++) {
+    const square = mapSquareToNumber(squares[i]);
+    var element = document.getElementById(square);
+    if (element) {
+      element.classList.add("highlight");
+    }
+  }
+}
 
 function mapSquareToNumber(square: Square): string {
   const row = square.row;

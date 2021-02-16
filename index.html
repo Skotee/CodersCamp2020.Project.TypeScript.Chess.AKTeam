@@ -16,7 +16,7 @@
 
   <body>
     <main>
-      <div class="cheesboard">
+      <div class="chessboard">
         <div class="field-container">
           <div class="number-label" id="field-8"><p>8</p></div>
             <div id="00" class="field rook-black" data-coordinate="A-8"></div>
@@ -110,6 +110,14 @@
         </div>
       </div>
     </main>
+    <a 
+      class="startGameButton" 
+      title="Click to do start game" 
+      href="#" 
+      onclick="handleStart();return false;"
+    >
+      Start gry
+    </a>
     <script type="module" src="dist/app.bundle.js" defer></script>
     <!-- <script type="module" src="lib/game.js" defer></script> -->
   </body>

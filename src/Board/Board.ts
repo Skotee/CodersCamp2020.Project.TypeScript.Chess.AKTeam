@@ -8,32 +8,23 @@ import { Knight } from "./Knight";
 import { Queen } from "./Queen";
 import { King } from "./King";
 import { Bishop } from "./Bishop";
+import { Move } from "../Game/Move";
 
 export class Board {
+  
   private _piecesOnBoard: Piece[][];
-  private _squares: (Piece | null)[][];
+  
 
   constructor(
-    squares:(Piece | null)[][] = [],
+    
     pieces: Piece[][] = [[], []],
   ) {
-    this._squares = squares;
+    
     this._piecesOnBoard = pieces;
 
-    for (var i: number = 0; i < 8; i++) {
-      this._squares[i] = [];
-      for (var j: number = 0; j < 8; j++) {
-        this._squares[i][j] = null;
-      }
-    }
+    
   }
-  public get squares(): (Piece | null)[][] {
-    return this._squares;
-  }
-
-  public set squares(squares: (Piece | null)[][]) {
-    this._squares = squares;
-  }
+  
 
   public set piecesOnBoard(pieces: Piece[][]) {
     this._piecesOnBoard = pieces;
@@ -52,7 +43,7 @@ export class Board {
       this._piecesOnBoard[1].push(piece)
 
     }
-    this._squares[piece.placeAt.row][piece.placeAt.column] = piece;
+    
 
   }
 
@@ -87,10 +78,55 @@ export class Board {
     this.addPiece(new King(PieceColor.White, PieceType.King, new Square(7, 4)))
   }
   public isSquareFree(square: Square): boolean {
-    return (this._squares[square.row][square.column] == null);
+    let isFree: boolean = true;
+    this._piecesOnBoard.forEach((color) =>{
+      color.forEach((piece)=>{
+        if (piece.placeAt.row == square.row && piece.placeAt.column == square.column) {
+          console.log(piece.pieceType + "\n" + piece.placeAt.column + "\n" + piece.placeAt.row )
+          isFree = false;
+        }
+      })
+    })
+    return isFree;
   }
   public isOppositeColor(square: Square, color: PieceColor): boolean {
-
-    return !(this._squares[square.row][square.column]?.pieceColor == color);
+    let isOpposite: boolean = false;
+    this._piecesOnBoard.forEach((pieceSetColor) =>{
+      pieceSetColor.forEach((piece)=>{
+        if (piece.placeAt.row == square.row && piece.placeAt.column == square.column && piece.pieceColor != color) {
+          
+          isOpposite = true;
+        }
+      })
+    })
+    return isOpposite;
   }
+  public updateBoard(move: Move): void{
+    
+    this._piecesOnBoard.forEach((set) => {
+      if(set.includes(move.piece)){
+        set.forEach((piece) =>{
+          
+          if(piece.pieceType == move.piece.pieceType && piece.placeAt == move.startSquare){
+            this.cleanSquare(move);
+            piece.updatePosition(move.endSquare);
+          }
+        })}
+    })
+    
+  }
+  public cleanSquare(move: Move): void{
+    
+    let pieceToClean: number = -1;
+    this._piecesOnBoard.forEach((set) => {
+      set.forEach((piece, i) =>{
+        if(piece.placeAt == move.endSquare && move.piece.pieceType != piece.pieceType){
+            pieceToClean = i;
+            
+          }
+        })
+    })
+    this._piecesOnBoard[(move.piece.pieceColor==PieceColor.White)? 0: 1].splice(pieceToClean, 1);
+  }
+  
 }

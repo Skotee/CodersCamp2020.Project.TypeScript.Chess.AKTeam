@@ -3,7 +3,7 @@
   --black-field-background: rgb(116, 114, 114);
   --field-width: 12%;
   --field-height: var(--field-width);
-  --cheesboard-width: 40vw;
-  --cheesboard-height: var(--cheesboard-width);
+  --chessboard-width: 40vw;
+  --chessboard-height: var(--chessboard-width);
   --label-ratio: 4%;
 }

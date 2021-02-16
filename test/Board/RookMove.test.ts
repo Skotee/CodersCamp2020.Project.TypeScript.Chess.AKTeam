@@ -66,6 +66,7 @@ describe("Moves for rook", () => {
     //then
     expect(possibleMove).toBe(true);
   });
+  
 
   //TEST 2-1
   test("White rook can't move on square with white Piece", () => {
@@ -83,43 +84,12 @@ describe("Moves for rook", () => {
     expect(possibleMove).toBe(false);
   });
 
-  // //TEST 2-2
-  // test("White rook can't move on square with white Piece", () => {
-  //   //given
-  //   const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(2, 2));
-  //   const pawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(2, 6));
-  //   const board = new Board();
-  //   board.addPiece(rook);
-  //   board.addPiece(pawn);
-  //   const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-  //   const newMove = new Move(new Square(2, 2), new Square(2, 6), rook, null);
-  //   //when
-  //   const possibleMove = game.isMovePossible(newMove);
-  //   //then
-  //   expect(possibleMove).toBe(false);
-  // });
-
-  // //TEST 2-3
-  // test("White rook can't move on square with white Piece", () => {
-  //   //given
-  //   const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(4, 4));
-  //   const pawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(4, 6));
-  //   const board = new Board();
-  //   // board.addPiece(rook);
-  //   // board.addPiece(pawn);
-  //   const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
-  //   const newMove = new Move(new Square(4, 4), new Square(4, 6), rook, null);
-  //   //when
-  //   const possibleMove = game.isMovePossible(newMove);
-  //   //then
-  //   expect(possibleMove).toBe(false);
-  // });
-
-  //TEST 2-4
+  
+  //TEST 2-2
   test("White rook can't move on square with white Piece", () => {
     //given
     const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(0, 0));
-    const pawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(6, 0));
+    const pawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(6, 0));
     const board = new Board();
     board.addPiece(rook);
     board.addPiece(pawn);
@@ -130,6 +100,37 @@ describe("Moves for rook", () => {
     //then
     expect(possibleMove).toBe(false);
   });
+  //TEST 2-1
+  test("Rook cant move trough pawn", () => {
+    //given
+    const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(0, 2));
+    const pawn = new Pawn(PieceColor.White, PieceType.Pawn, new Square(2, 2));
+    const board = new Board();
+    board.addPiece(rook);
+    board.addPiece(pawn);
+    const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+    const newMove = new Move(new Square(0, 2), new Square(4, 2), rook, null);
+    //when
+    const possibleMove = game.isMovePossible(newMove);
+    //then
+    expect(possibleMove).toBe(false);
+  });
+
+  test("is pawn on correct place", () => {
+    //given
+    const rook = new Rook(PieceColor.White, PieceType.Rook, new Square(0, 2));
+    const pawn = new Pawn(PieceColor.Black, PieceType.Pawn, new Square(2, 2));
+    const board = new Board();
+    board.addPiece(rook);
+    board.addPiece(pawn);
+    const game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+    const newMove = new Move(new Square(0, 2), new Square(4, 2), rook, null);
+    //when
+    const numberOfPieces = game.board.piecesOnBoard[0][1].placeAt.column = 2;
+    //then
+    expect(numberOfPieces == 2).toBe(true);
+  });
+
 
   //TEST 3-1
   test("White Rook captures black Piece", () => {

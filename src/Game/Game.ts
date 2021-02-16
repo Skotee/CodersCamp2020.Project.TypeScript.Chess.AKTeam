@@ -94,9 +94,9 @@ export class Game {
     }
   }
 
-  isChecked(color?: PieceColor): boolean {
+  isChecked(board: Board, color?: PieceColor): boolean {
     let squaresAttacked = this.checkAllSquaresAttacked(color);
-    let piecesArray = this._board.getPieceSet((color == undefined) ? this._turn : color);
+    let piecesArray = board.getPieceSet((color == undefined) ? this._turn : color);
     piecesArray.forEach((e) => {
       if (e.pieceType == PieceType.King) {
         squaresAttacked.includes(e.placeAt)
@@ -118,23 +118,19 @@ export class Game {
 
     // patrze se wszystkie mozliwe przyszle ruchu, nastepnie patrze czy bedzie dalej szach, jesli isChecked dalej jest tru to wtedy jest mat
     let pieces = this.board.getPieceSet(this._turn);
-    let bool: boolean = false;
     pieces.forEach((piece) => {
       let squaresArray: Square[] = this.getAvailableSquares(piece);
-      squaresArray.forEach((sqr) => {
+      squaresArray.forEach((square) => {
         // ogolnie nw jak sprawdzic aby gra sprawdzala jeden ruch przed
-        this.addMove(new Move(piece.placeAt, sqr, piece, null));
+        let tempBoard = Object.create(this._board)
+        tempBoard.updateBoard(new Move(piece.placeAt, square, piece, null));
         // wiec tutaj powinien byc jakis warunek
-        if (this.isChecked(piece.pieceColor)) {
-          bool = true;
+        if (!this.isChecked(tempBoard, piece.pieceColor)) {
+          return false
         }
-
-
       })
     })
-
-
-    return false;
+    return true;
 
   }
   isStalemated(): boolean {
@@ -144,7 +140,7 @@ export class Game {
   getAvailableSquares(piece: Piece): Square[] {
     let allSquares: Square[] = piece.validMoves();
     let availableSquares: Square[] = [];
-    availableSquares.forEach((e) => {
+    allSquares.forEach((e) => {
       if (this.isMovePossible(new Move(piece.placeAt, e, piece, null))) {
         availableSquares.push(e);
       }
@@ -170,7 +166,7 @@ export class Game {
 
     if (pieceType == PieceType.King) { //czy to na pewno król
       for (let i = 0; i < playedMoves.length; i++) { //czy król, którym próbujemy zrobić roszadę się ruszył
-        if (playedMoves[i].piece.pieceType == PieceType.King && playedMoves[i].piece.pieceColor == pieceColor || this.isChecked()) {
+        if (playedMoves[i].piece.pieceType == PieceType.King && playedMoves[i].piece.pieceColor == pieceColor || this.isChecked(this._board)) {
           return false;
         }
 
@@ -275,26 +271,30 @@ export class Game {
   }
   isFreeRoute(move: Move): boolean {
     let directionX = Math.sign(move.endSquare.row - move.startSquare.row)
-    let directionY = Math.sign(move.endSquare.row - move.startSquare.column)
-    let moveRange = Math.abs(Math.max(move.endSquare.row - move.startSquare.row, move.endSquare.row - move.startSquare.column)) // trzy pola, 
+    let directionY = Math.sign(move.endSquare.column - move.startSquare.column)
+    let moveRange = Math.max(Math.abs(move.endSquare.row - move.startSquare.row), Math.abs(move.endSquare.column - move.startSquare.column)) // trzy pola, 
 
-    for (let i = 1; i++; i < moveRange)
-      if (this.board.isSquareFree(new Square(move.startSquare.row + i * directionX, move.startSquare.column + i * directionY))) {
-        return true
+    for (let i = 1; i < moveRange; i++){
+      if (!this.board.isSquareFree(new Square(move.startSquare.row + i * directionX, move.startSquare.column + i * directionY))) {
+        return false;
       }//pole jest zajęte 
-    return false
-  }
+    }
+    return true;
+  } 
+    
+
+  
   isMovePossiblePawn(move: Move): boolean {
-    return this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor);
+    return !this.isCheckAfterMove(move) && (this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
   isMovePossibleRookBishopQueen(move: Move): boolean {
-    return this.isFreeRoute(move) && (this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor));
+    return !this.isCheckAfterMove(move) && this.isFreeRoute(move) && (this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
   isMovePossibleKnight(move: Move): boolean {
-    return this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor);
+    return !this.isCheckAfterMove(move) && (this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
   isMovePossibleKing(move: Move): boolean {
-    return this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor);
+    return !this.isCheckAfterMove(move) && (this.board.isSquareFree(move.endSquare) || this.board.isOppositeColor(move.endSquare, move.piece.pieceColor));
   }
 
 
@@ -334,5 +334,9 @@ export class Game {
 
     return squaresAttacked;
   }
-
+  isCheckAfterMove(move: Move):boolean{
+    let tempBoard = Object.create(this._board)
+    tempBoard.updateBoard(move);
+    return this.isChecked(tempBoard, move.piece.pieceColor); 
+  }
 }
