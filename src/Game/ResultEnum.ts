@@ -1,4 +1,4 @@
-enum Result{
+export enum Result {
     BlackWin,
     WhiteWin,
     Draw,

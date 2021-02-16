@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CHESS GAME</title>
+    <base href="/" />
+    <link rel="stylesheet" href="styles/App.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <div class="chessboard">
+        <div class="field-container">
+          <div class="number-label" id="field-8"><p>8</p></div>
+            <div id="00" class="field rook-black" data-coordinate="A-8"></div>
+            <div id="01" class="field knight-black" data-coordinate="B-8"></div>
+            <div id="02" class="field bishop-black" data-coordinate="C-8"></div>
+            <div id="03" class="field queen-black" data-coordinate="D-8"></div>
+            <div id="04" class="field king-black" data-coordinate="E-8"></div>
+            <div id="05" class="field bishop-black" data-coordinate="F-8"></div>
+            <div id="06" class="field knight-black" data-coordinate="G-8"></div>
+            <div id="07" class="field rook-black" data-coordinate="H-8"></div>
+
+          <div class="number-label" id="field-7"><p>7</p></div>
+            <div id="10" class="field pawn-black" data-coordinate="A-7"></div>
+            <div id="11" class="field pawn-black" data-coordinate="B-7"></div>
+            <div id="12" class="field pawn-black" data-coordinate="C-7"></div>
+            <div id="13" class="field pawn-black" data-coordinate="D-7"></div>
+            <div id="14" class="field pawn-black" data-coordinate="E-7"></div>
+            <div id="15" class="field pawn-black" data-coordinate="F-7"></div>
+            <div id="16" class="field pawn-black" data-coordinate="G-7"></div>
+            <div id="17" class="field pawn-black" data-coordinate="H-7"></div>
+
+          <div class="number-label" id="field-6"><p>6</p></div>
+            <div id="20" class="field" data-coordinate="A-6"></div>
+            <div id="21" class="field" data-coordinate="B-6"></div>
+            <div id="22" class="field" data-coordinate="C-6"></div>
+            <div id="23" class="field" data-coordinate="D-6"></div>
+            <div id="24" class="field" data-coordinate="E-6"></div>
+            <div id="25" class="field" data-coordinate="F-6"></div>
+            <div id="26" class="field" data-coordinate="G-6"></div>
+            <div id="27" class="field" data-coordinate="H-6"></div>
+
+          <div class="number-label" id="field-5"><p>5</p></div>
+            <div id="30" class="field" data-coordinate="A-5"></div>
+            <div id="31" class="field" data-coordinate="B-5"></div>
+            <div id="32" class="field" data-coordinate="C-5"></div>
+            <div id="33" class="field" data-coordinate="D-5"></div>
+            <div id="34" class="field" data-coordinate="E-5"></div>
+            <div id="35" class="field" data-coordinate="F-5"></div>
+            <div id="36" class="field" data-coordinate="G-5"></div>
+            <div id="37" class="field" data-coordinate="H-5"></div>
+
+          <div class="number-label" id="field-4"><p>4</p></div>
+            <div id="40" class="field" data-coordinate="A-4"></div>
+            <div id="41" class="field" data-coordinate="B-4"></div>
+            <div id="42" class="field" data-coordinate="C-4"></div>
+            <div id="43" class="field" data-coordinate="D-4"></div>
+            <div id="44" class="field" data-coordinate="E-4"></div>
+            <div id="45" class="field" data-coordinate="F-4"></div>
+            <div id="46" class="field" data-coordinate="G-4"></div>
+            <div id="47" class="field" data-coordinate="H-4"></div>
+ 
+          <div class="number-label" id="field-3"><p>3</p></div>
+            <div id="50" class="field" data-coordinate="A-3"></div>
+            <div id="51" class="field" data-coordinate="B-3"></div>
+            <div id="52" class="field" data-coordinate="C-3"></div>
+            <div id="53" class="field" data-coordinate="D-3"></div>
+            <div id="54" class="field" data-coordinate="E-3"></div>
+            <div id="55" class="field" data-coordinate="F-3"></div>
+            <div id="56" class="field" data-coordinate="G-3"></div>
+            <div id="57" class="field" data-coordinate="H-3"></div>
+  
+          <div class="number-label" id="field-2"><p>2</p></div>
+            <div id="60" class="field pawn-white" data-coordinate="A-2"></div>
+            <div id="61" class="field pawn-white" data-coordinate="B-2"></div>
+            <div id="62" class="field pawn-white" data-coordinate="C-2"></div>
+            <div id="63" class="field pawn-white" data-coordinate="D-2"></div>
+            <div id="64" class="field pawn-white" data-coordinate="E-2"></div>
+            <div id="65" class="field pawn-white" data-coordinate="F-2"></div>
+            <div id="66" class="field pawn-white" data-coordinate="G-2"></div>
+            <div id="67" class="field pawn-white" data-coordinate="H-2"></div>
+ 
+          <div class="number-label" id="field-1"><p>1</p></div>
+            <div id="70" class="field rook-white" data-coordinate="A-1"></div>
+            <div id="71" class="field knight-white" data-coordinate="B-1"></div>
+            <div id="72" class="field bishop-white" data-coordinate="C-1"></div>
+            <div id="73" class="field queen-white" data-coordinate="D-1"></div>
+            <div id="74" class="field king-white" data-coordinate="E-1"></div>
+            <div id="75" class="field bishop-white" data-coordinate="F-1"></div>
+            <div id="76" class="field knight-white" data-coordinate="G-1"></div>
+            <div id="77" class="field rook-white" data-coordinate="H-1"></div>
+
+          <div class="letter-label" id="field-O"></div>
+          <div class="letter-label" id="field-A">A</div>
+          <div class="letter-label" id="field-B">B</div>
+          <div class="letter-label" id="field-C">C</div>
+          <div class="letter-label" id="field-D">D</div>
+          <div class="letter-label" id="field-E">E</div>
+          <div class="letter-label" id="field-F">F</div>
+          <div class="letter-label" id="field-G">G</div>
+          <div class="letter-label" id="field-H">H</div>
+        </div>
+      </div>
+    </main>
+    <a 
+      class="startGameButton" 
+      title="Click to do start game" 
+      href="#" 
+      onclick="handleStart();return false;"
+    >
+      Start gry
+    </a>
+    <script type="module" src="dist/app.bundle.js" defer></script>
+    <!-- <script type="module" src="lib/game.js" defer></script> -->
+  </body>
+</html>

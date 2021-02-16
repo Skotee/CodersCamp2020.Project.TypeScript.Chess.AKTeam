@@ -1,0 +1,17 @@
+@import "./reset.css";
+@import "./variables.css";
+@import "./chessboard.css";
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

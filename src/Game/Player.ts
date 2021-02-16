@@ -1,13 +1,27 @@
-class Player{
-    name:string;
-    chessSet: string;
-    pieceColor: PieceColor;
+import { PieceColor } from "../Board/PieceColorEnum"
 
-    constructor(name:string, chessSet:string,pieceColor:PieceColor){
-        this.name = name;
-        this.chessSet = chessSet;
-        this.pieceColor = pieceColor;
+export class Player {
+    private _name: string;
+    private _pieceColor: PieceColor;
+
+    constructor(name: string, pieceColor: PieceColor) {
+        this._name = name;
+        this._pieceColor = pieceColor;
     }
 
+    public get name(): string {
+        return this._name;
+    }
 
+    public set name(name: string) {
+        this._name = name;
+    }
+
+    public get pieceColor(): PieceColor {
+        return this._pieceColor;
+    }
+
+    public set pieceColor(pieceColor: PieceColor) {
+        this._pieceColor = pieceColor;
+    }
 }
