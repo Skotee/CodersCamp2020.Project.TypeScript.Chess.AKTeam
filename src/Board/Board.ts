@@ -82,7 +82,7 @@ export class Board {
     this._piecesOnBoard.forEach((color) =>{
       color.forEach((piece)=>{
         if (piece.placeAt.row == square.row && piece.placeAt.column == square.column) {
-          console.log(piece.pieceType + "\n" + piece.placeAt.column + "\n" + piece.placeAt.row )
+          //console.log(piece.pieceType + "\n" + piece.placeAt.column + "\n" + piece.placeAt.row )
           isFree = false;
         }
       })

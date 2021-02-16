@@ -96,7 +96,7 @@ export class Game {
 
   isChecked(board: Board, color?: PieceColor): boolean {
     let squaresAttacked = this.checkAllSquaresAttacked(color);
-    let piecesArray = board.getPieceSet((color == undefined) ? this._turn : color);
+    let piecesArray = board.getPieceSet(this._turn);
     piecesArray.forEach((e) => {
       if (e.pieceType == PieceType.King) {
         squaresAttacked.includes(e.placeAt)
@@ -272,10 +272,13 @@ export class Game {
   isFreeRoute(move: Move): boolean {
     let directionX = Math.sign(move.endSquare.row - move.startSquare.row)
     let directionY = Math.sign(move.endSquare.column - move.startSquare.column)
-    let moveRange = Math.max(Math.abs(move.endSquare.row - move.startSquare.row), Math.abs(move.endSquare.column - move.startSquare.column)) // trzy pola, 
+    let moveRange = Math.max(Math.abs(move.endSquare.row - move.startSquare.row), Math.abs(move.endSquare.column - move.startSquare.column));
 
     for (let i = 1; i < moveRange; i++){
-      if (!this.board.isSquareFree(new Square(move.startSquare.row + i * directionX, move.startSquare.column + i * directionY))) {
+      let CheckX = move.startSquare.row + i * directionX;
+      let CheckY = move.startSquare.column + i * directionY;
+      if (!this.board.isSquareFree(new Square(CheckX, CheckY))) {
+        console.log(move.piece.pieceType + " " + i + " " + moveRange + " " + "\n" + move.piece.placeAt.row + " " + CheckX +  "\n" + move.piece.placeAt.column + " " + CheckY );
         return false;
       }//pole jest zajęte 
     }
@@ -326,7 +329,7 @@ export class Game {
 
   checkAllSquaresAttacked(color?: PieceColor): Square[] {
     let squaresAttacked: Square[] = [];
-    let piecesArray = this._board.getPieceSet((color == undefined) ? this._turn : color);
+    let piecesArray = this._board.getPieceSet(this._turn);
     piecesArray.forEach((e) => {
       squaresAttacked.concat(this.getAvailableSquares(e))
     })
