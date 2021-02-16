@@ -7,6 +7,7 @@ import { Pawn } from "./Board/Pawn";
 import { Piece } from "./Board/Piece";
 import { Game } from "./Game/Game"
 import { Board } from "./Board/Board";
+import { Rook } from "./Board/Rook";
 // board.updatePosition(move);
 
 // function addRook(squareNumber, piece) { //przykład
@@ -54,82 +55,89 @@ import { Board } from "./Board/Board";
 // });
 
 function gameLoop() {
-  let board:Board = new Board()
+  let board: Board = new Board();
   board.create();
-  let game:Game = new Game(undefined,PieceColor.White,undefined,undefined,undefined,board)
-  while (game.isEnded()) { //pętla działa dopóki isEnded nie równa się false
-    
+  let game: Game = new Game(undefined, PieceColor.White, undefined, undefined, undefined, board);
+  //   while (game.isEnded()) { //pętla działa dopóki isEnded nie równa się false
 
-    //kliknięcie na kwadrat w szachownicy
+  //     const fields = document.querySelectorAll(".field"); //kliknięcie na kwadrat w szachownicy
+  //     for (let i = 0; i < fields.length; i++) {
+  //       fields[i].addEventListener("click", function (e: any): void {
+  //         const isPieceOnSquare = e.target.getAttribute("id");
 
-    if ( czy w tym square stoi pionek aktualnego gracza) //sprawdzenie czy w tym square stoi pionek aktualnego gracza
-    { 
-      //jeśli tak: dalsze działania
+  //         if () { //sprawdzenie czy w tym square stoi pionek aktualnego gracza
 
-      // podświetl kliknięte pole
+  //           // podświetl kliknięte pole
+
+  //           // podświetl pola na które może stanąć wybrana bierka
+
+  //           // kliknięcie na kwadrat w szachownicy
+
+  //           if ("czy ten kwadrat należy do pól podświetlonych ?") {  // czy ten kwadrat należy do pól podświetlonych? sprawdzenie metody w stylu isAvailableSquare
+
+  //             // wywołaj metodę removePiece() ze starego kwadratu oraz wywołaj metodę addPiece() na nowym kwadracie
+
+  //             if ("condition") { //sprawdź warunki końca gry (mat, pat, zasada 50, zadada trzykrotne) // ten if jest niepotrzbemy bo to samo sprawdzamy w warunu pętli while
+
+  //               //jesli koniec gry
+
+  //             } else {
+  //               //jeśli nie  nic nie rób
+  //             }
+
+  //           } else {
+  //             //jeśli nie  nic nie rób
+  //           }
+  //         } else {
+  //           //jeśli nie  nic nie rób
+  //         }
+  //       }
+  //     }
+  //   }
 
 
-      // podświetl pola na które może stanąć wybrana bierka
 
-
-      // kliknięcie na kwadrat w szachownicy
-
-      
-      if (czy ten kwadrat należy do pól podświetlonych?) {  // czy ten kwadrat należy do pól podświetlonych? sprawdzenie metody w stylu isAvailableSquare
-        //wywołaj metodę removePiece() ze starego kwadratu oraz wywołaj metodę addPiece() na nowym kwadracie
-
+  function addHighlight(e: any): void {
+    console.log("addhi");
+    const whichSquare = e.target.getAttribute("id");
+    const newSquare = mapIdToSquare(whichSquare);
+    const piecesOnBoard = game.board.piecesOnBoard;
+    for (let i = 0; i < piecesOnBoard.length; i++) {
+      for (let j = 0; j < piecesOnBoard.length; j++) {
+        if (piecesOnBoard[i][j].placeAt == newSquare) {
+          highlightSquaresForPiece(piecesOnBoard[i][j]);
+        }
       }
-       if (condition) { //sprawdź warunki końca gry (mat, pat, zasada 50, zadada trzykrotne) // ten if jest niepotrzbemy bo to samo sprawdzamy w warunu pętli while
-       
-         //kesli koniec gry
-       } else {
-         
-      } else {
-        
-      }
-     
-    } else { 
-      //jeśli nie  nic nie rób
     }
   }
-}
 
-
-function addHighlight(e: any): void {
-  const whichSquare = e.target.getAttribute("id");
-  const newSquare = mapIdToSquare(whichSquare);
-  const board = newGame.board;
-  const piece = board[newSquare.row][newSquare.column];
-  if (piece) {
-    highlightSquaresForPiece(piece);
-  }
-}
-
-function highlightSquaresForPiece(piece: Piece) {
-  const squares = newGame.getAvailableSquares(piece);
-  for (let i = 0; i < squares.length; i++) {
-    const square = mapSquareToNumber(squares[i]);
-    var element = document.getElementById(square);
-    if (element) {
-      element.classList.add("highlight");
+  function highlightSquaresForPiece(piece: Piece) {
+    const squares = newGame.getAvailableSquares(piece);
+    for (let i = 0; i < squares.length; i++) {
+      const square = mapSquareToNumber(squares[i]);
+      var element = document.getElementById(square);
+      if (element) {
+        element.classList.add("highlight");
+      }
     }
   }
-}
 
-function mapSquareToNumber(square: Square): string {
-  const row = square.row;
-  const column = square.column;
-  const number = "" + row + "" + column;
-  return number;
-}
+  function mapSquareToNumber(square: Square): string {
+    const row = square.row;
+    const column = square.column;
+    const number = "" + row + "" + column;
+    return number;
+  }
 
-function mapIdToSquare(id: String): Square {
-  const row = +(id[0]);
-  const column = +(id[1]);
-  return new Square(row, column);
-}
+  function mapIdToSquare(id: String): Square {
+    const row = +(id[0]);
+    const column = +(id[1]);
+    return new Square(row, column);
+  }
 
-const fields = document.querySelectorAll(".field");
-for (let i = 0; i < fields.length; i++) {
-  fields[i].addEventListener("click", addHighlight);
+  const fields = document.querySelectorAll(".field");
+  for (let i = 0; i < fields.length; i++) {
+    fields[i].addEventListener("click", addHighlight);
+  }
+
 }
